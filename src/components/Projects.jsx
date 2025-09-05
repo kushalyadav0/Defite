@@ -1,5 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import { ArrowRight, ExternalLink, Github } from 'lucide-react';
+import real_estate from '../components/Images/real-estate-icon.png'
+import Rag_chatbot from '../components/Images/Rag-chatbot-icon.png'
+import chat_app  from '../components/Images/chat-app.png'
 
 const Projects = () => {
   const projectsRef = useRef(null);
@@ -25,27 +28,27 @@ const Projects = () => {
 
   const projects = [
     {
-      title: 'E-Commerce Platform',
-      description: 'A comprehensive e-commerce solution with advanced features including payment integration, inventory management, and a powerful admin dashboard. Built with modern technologies for optimal performance and user experience.',
-      image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=600',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-      category: 'Full-Stack Development',
+      title: 'Real-Estate Website',
+      description: 'A comprehensive real estate platform with advanced features including property search filters, virtual tour integration, and a powerful agent dashboard. Built with modern technologies for optimal performance and a seamless user experience.',
+      image: real_estate,
+      technologies: ['React', 'Tailwind css', 'Java Script'],
+      category: 'Front-end Development',
       gradient: 'from-blue-500 to-purple-600'
     },
     {
-      title: 'AI-Powered Analytics Dashboard',
-      description: 'An intelligent business analytics platform that leverages machine learning algorithms to provide predictive insights, automated reporting, and real-time data visualization for enterprise decision-making.',
-      image: 'https://images.pexels.com/photos/590020/pexels-photo-590020.jpeg?auto=compress&cs=tinysrgb&w=600',
-      technologies: ['Python', 'TensorFlow', 'React', 'D3.js'],
-      category: 'AI/ML Solution',
+      title: 'RAG BASED CHATBOT',
+      description: 'TubeQuery AI is an intelligent question-answering system that allows users to ask questions about YouTube videos. Powered by advanced Retrieval-Augmented Generation (RAG) technology, this application extracts transcripts from YouTube videos, processes them using natural language understanding, and provides accurate answers.',
+      image: Rag_chatbot,
+      technologies: ['Python', 'React', 'Fast Api','LangChain',"Gemini Api","HuggingFace Transformers"],
+      category: 'Natural Language Processing',
       gradient: 'from-green-500 to-teal-600'
     },
     {
-      title: 'Secure Banking Application',
-      description: 'A mobile-first banking application with biometric authentication, real-time transaction processing, and advanced security features. Designed for seamless user experience while maintaining the highest security standards.',
-      image: 'https://images.pexels.com/photos/919734/pexels-photo-919734.jpeg?auto=compress&cs=tinysrgb&w=600',
-      technologies: ['React Native', 'Java Spring', 'PostgreSQL', 'AWS'],
-      category: 'Mobile Development',
+      title: 'Real-Time Group Chat',
+      description: 'A full-stack, real-time communication platform enabling seamless group conversations and instant messaging. Built with WebSockets for bidirectional data flow, this application ensures a responsive and dynamic user experience, perfect for collaboration and community building.',
+      image: chat_app,
+      technologies: ['React JS',"Tailwind CSS" ,'Java SpringBoot ', 'MongoDB', 'NGINIX',"Web Sockets"],
+      category: 'Full Stack Development',
       gradient: 'from-purple-500 to-pink-600'
     },
     {

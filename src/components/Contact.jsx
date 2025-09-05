@@ -50,22 +50,22 @@ const Contact = () => {
     {
       icon: Mail,
       title: 'Email',
-      value: 'hello@zerolabs.dev',
+      value: 'zerolabsorg@gmail.com',
       description: 'Send us an email anytime',
       gradient: 'from-blue-500 to-purple-600'
     },
     {
       icon: Phone,
       title: 'Phone',
-      value: '+1 (555) 123-4567',
-      description: 'Mon-Fri from 8am to 6pm',
+      value: '+91 8077246637',
+      description: 'all days from 8am to 11:59pm',
       gradient: 'from-green-500 to-teal-600'
     },
     {
       icon: MapPin,
       title: 'Office',
-      value: 'San Francisco, CA',
-      description: 'Come say hello at our HQ',
+      value: 'Chandigarh',
+      description: 'Welcome to zero labs',
       gradient: 'from-orange-500 to-red-600'
     },
     {
