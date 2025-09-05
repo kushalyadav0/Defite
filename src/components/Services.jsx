@@ -1,0 +1,172 @@
+import React, { useEffect, useRef } from 'react';
+import { Code, Server, Brain, Shield, ArrowRight } from 'lucide-react';
+
+const Services = () => {
+  const servicesRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fade-in-up');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (servicesRef.current) {
+      observer.observe(servicesRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const services = [
+    {
+      title: 'Frontend Development',
+      icon: Code,
+      description: 'Create stunning, responsive, and interactive user interfaces that provide exceptional user experiences. We specialize in modern frontend technologies and frameworks to build scalable web applications that work seamlessly across all devices and browsers.',
+      technologies: ['React.js', 'Tailwind CSS', 'HTML5', 'CSS3', 'JavaScript', 'Next.js', 'Vue.js'],
+      gradient: 'from-blue-500 to-cyan-600',
+      bgGradient: 'from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20'
+    },
+    {
+      title: 'Backend Development',
+      icon: Server,
+      description: 'Build robust, scalable, and secure server-side applications using industry-leading frameworks and best practices. Our backend solutions ensure optimal performance, data integrity, and seamless integration with frontend applications.',
+      technologies: ['Python', 'Django', 'Flask', 'FastAPI', 'Java Spring Boot', 'Node.js', 'PostgreSQL'],
+      gradient: 'from-green-500 to-emerald-600',
+      bgGradient: 'from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20'
+    },
+    {
+      title: 'AI/ML Solutions',
+      icon: Brain,
+      description: 'Harness the power of artificial intelligence and machine learning to create intelligent applications. We develop custom AI solutions including RAG pipelines, intelligent agents, and automated systems that drive business value.',
+      technologies: ['RAG Pipelines', 'AI Agents', 'LangChain', 'LangGraph', 'Machine Learning', 'TensorFlow', 'PyTorch'],
+      gradient: 'from-purple-500 to-violet-600',
+      bgGradient: 'from-purple-50 to-violet-50 dark:from-purple-900/20 dark:to-violet-900/20'
+    },
+    {
+      title: 'Secure Deployment',
+      icon: Shield,
+      description: 'Ensure your applications are production-ready with our comprehensive deployment and DevOps services. We implement security best practices, monitoring, and scalable infrastructure to keep your applications running smoothly.',
+      technologies: ['DevOps', 'Cloud Security', 'CI/CD', 'Docker', 'Kubernetes', 'AWS', 'Monitoring'],
+      gradient: 'from-orange-500 to-red-600',
+      bgGradient: 'from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20'
+    }
+  ];
+
+  return (
+    <section id="services" className="py-20 bg-gray-50 dark:bg-gray-900 relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-40 -right-20 w-80 h-80 bg-gradient-to-br from-blue-200/30 to-purple-200/30 dark:from-blue-800/20 dark:to-purple-800/20 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-gradient-to-br from-purple-200/30 to-pink-200/30 dark:from-purple-800/20 dark:to-pink-800/20 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div ref={servicesRef} className="opacity-0 transform translate-y-10">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+              Our{' '}
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                Services
+              </span>
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8 rounded-full"></div>
+            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
+              From frontend to backend, from AI solutions to secure deployment, we offer comprehensive 
+              development services to bring your vision to life with cutting-edge technology and expertise.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {services.map((service, index) => (
+              <div 
+                key={index} 
+                className={`group bg-gradient-to-br ${service.bgGradient} rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 p-8 border border-gray-200 dark:border-gray-700 transform hover:scale-105 hover:-translate-y-2 relative overflow-hidden`}
+              >
+                {/* Hover overlay */}
+                <div className="absolute inset-0 bg-white/5 dark:bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+                
+                <div className="relative z-10">
+                  <div className={`w-16 h-16 bg-gradient-to-br ${service.gradient} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg`}>
+                    <service.icon className="text-white" size={28} />
+                  </div>
+
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                    {service.title}
+                  </h3>
+
+                  <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                    {service.description}
+                  </p>
+
+                  <div className="mb-6">
+                    <h4 className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-3 uppercase tracking-wide">
+                      Technologies & Tools
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {service.technologies.map((tech, techIndex) => (
+                        <span
+                          key={techIndex}
+                          className="inline-block bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 text-sm px-3 py-1 rounded-full border border-gray-200 dark:border-gray-600 hover:bg-white dark:hover:bg-gray-700 transition-all duration-200 hover:scale-105 shadow-sm"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <button className="group/btn flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 font-semibold transition-all duration-200 hover:translate-x-2">
+                    Learn More
+                    <ArrowRight className="ml-2 group-hover/btn:translate-x-1 transition-transform duration-200" size={16} />
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Call to Action */}
+          <div className="text-center mt-16">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl border border-gray-200 dark:border-gray-700 max-w-3xl mx-auto">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                Ready to Start Your Project?
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-6">
+                Let's discuss how our services can help bring your vision to life.
+              </p>
+              <button 
+                onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+                className="inline-flex items-center px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl font-semibold transform hover:scale-105"
+              >
+                Get Started Today
+                <ArrowRight className="ml-2" size={16} />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <style jsx>{`
+        @keyframes fade-in-up {
+          from {
+            opacity: 0;
+            transform: translateY(40px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animate-fade-in-up {
+          animation: fade-in-up 0.8s ease-out forwards;
+        }
+      `}</style>
+    </section>
+  );
+};
+
+export default Services;
