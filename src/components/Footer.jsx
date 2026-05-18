@@ -20,7 +20,7 @@ const Footer = () => {
               Defite
             </h3>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Building systems that help businesses scale.
+              Building systems that help businesses reduce manual work, improve efficiency, and scale with confidence.
             </p>
           </div>
 
@@ -28,31 +28,31 @@ const Footer = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 max-w-2xl mx-auto">
             <div className="text-center">
               <h4 className="text-white font-semibold mb-2">Frontend</h4>
-              <p className="text-gray-400 text-sm">React & Modern JS</p>
+              <p className="text-gray-400 text-sm">Modern, responsive interfaces</p>
             </div>
             <div className="text-center">
               <h4 className="text-white font-semibold mb-2">Backend</h4>
-              <p className="text-gray-400 text-sm">Python & Java</p>
+              <p className="text-gray-400 text-sm">Scalable & secure systems</p>
             </div>
             <div className="text-center">
               <h4 className="text-white font-semibold mb-2">AI/ML</h4>
-              <p className="text-gray-400 text-sm">Smart Solutions</p>
+              <p className="text-gray-400 text-sm">Reduce manual work, improve efficiency</p>
             </div>
             <div className="text-center">
               <h4 className="text-white font-semibold mb-2">Deployment</h4>
-              <p className="text-gray-400 text-sm">Secure & Scalable</p>
+              <p className="text-gray-400 text-sm">Reliable, production-ready infrastructure</p>
             </div>
           </div>
 
           {/* Made with Love */}
-          <div className="flex items-center justify-center space-x-2 mb-6 text-gray-400">
+          {/* <div className="flex items-center justify-center space-x-2 mb-6 text-gray-400">
             <span>Made with</span>
             <Heart className="text-red-500 fill-current animate-pulse" size={16} />
             <span>and</span>
             <Code className="text-blue-400" size={16} />
             <span>and lots of</span>
             <Coffee className="text-yellow-600" size={16} />
-          </div>
+          </div> */}
 
           {/* Copyright and Links */}
           <div className="border-t border-gray-800 pt-6">
@@ -75,10 +75,10 @@ const Footer = () => {
           {/* Contact CTA */}
           <div className="mt-8 p-6 bg-gradient-to-r from-blue-900/50 to-purple-900/50 rounded-xl border border-gray-800">
             <h4 className="text-xl font-semibold text-white mb-2">
-              Ready to Start Your Next Project?
+              Have a project or idea?
             </h4>
             <p className="text-gray-300 mb-4">
-              Let's discuss how we can help bring your vision to life.
+              Let’s build a system that actually works.
             </p>
             <button 
               onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}

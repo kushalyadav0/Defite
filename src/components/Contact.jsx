@@ -51,14 +51,14 @@ const Contact = () => {
       icon: Mail,
       title: 'Email',
       value: 'hello@deite.in',
-      description: 'Send us an email anytime',
+      description: 'Reach out anytime',
       gradient: 'from-blue-500 to-purple-600'
     },
     {
       icon: Phone,
       title: 'Phone',
       value: '+91 7023526817',
-      description: 'all days from 8am to 11:59pm',
+      description: 'Available daily, 8 AM – 11:59 PM',
       gradient: 'from-green-500 to-teal-600'
     },
     {
@@ -72,7 +72,7 @@ const Contact = () => {
       icon: Clock,
       title: 'Response Time',
       value: '< 24 Hours',
-      description: 'We respond quickly',
+      description: 'Fast and reliable communication',
       gradient: 'from-purple-500 to-pink-600'
     }
   ];
@@ -182,12 +182,10 @@ const Contact = () => {
             <div className="space-y-8">
               <div>
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                  Let's Start a Conversation
+                  Let’s Build Something That Works
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-                  We're here to help you turn your ideas into reality. Reach out to us through any 
-                  of the channels below, and let's discuss your next project. Our team is ready to 
-                  provide expert guidance and deliver exceptional results.
+                  Tell us about your business, current challenges, or idea — we’ll help you identify what to build and how to move forward.
                 </p>
               </div>
               
@@ -222,7 +220,8 @@ const Contact = () => {
                     Free Consultation
                   </h4>
                   <p className="text-gray-600 dark:text-gray-300 text-sm">
-                    Schedule a free 30-minute consultation to discuss your project requirements and get expert advice.
+                    30-minute discussion to understand your business and suggest the right approach.
+                    <b>No obligation. Clear direction.</b>
                   </p>
                 </div>
 
@@ -231,7 +230,7 @@ const Contact = () => {
                     Project Estimate
                   </h4>
                   <p className="text-gray-600 dark:text-gray-300 text-sm">
-                    Get a detailed project estimate with timeline and cost breakdown within 48 hours.
+                    Get a structured estimate with timeline and cost breakdown within 48 hours.
                   </p>
                 </div>
               </div>
