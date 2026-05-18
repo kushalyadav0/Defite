@@ -35,7 +35,7 @@ const Testimonials = () => {
 
   const testimonials = [
     {
-      quote: "Zerolabs transformed our vision into a stunning reality. Their attention to detail and technical expertise is unmatched. The team delivered beyond our expectations and provided ongoing support that made all the difference.",
+      quote: "Defite transformed our vision into a stunning reality. Their attention to detail and technical expertise is unmatched. The team delivered beyond our expectations and provided ongoing support that made all the difference.",
       author: "Sarah Chen",
       position: "Tech Startup CEO",
       company: "InnovateTech Solutions",
@@ -44,7 +44,7 @@ const Testimonials = () => {
       project: "E-Commerce Platform"
     },
     {
-      quote: "Working with Zerolabs was a game-changer for our business. They delivered a complex AI solution on time and within budget. Their professionalism and expertise in machine learning helped us gain a competitive edge.",
+      quote: "Working with Defite was a game-changer for our business. They delivered a complex AI solution on time and within budget. Their professionalism and expertise in machine learning helped us gain a competitive edge.",
       author: "Michael Rodriguez",
       position: "E-commerce Director",
       company: "RetailMax Corp",
@@ -62,7 +62,7 @@ const Testimonials = () => {
       project: "Healthcare Management System"
     },
     {
-      quote: "Zerolabs delivered a secure, scalable banking application that our customers love. Their expertise in security and user experience design created a product that stands out in the competitive fintech market.",
+      quote: "Defite delivered a secure, scalable banking application that our customers love. Their expertise in security and user experience design created a product that stands out in the competitive fintech market.",
       author: "James Thompson",
       position: "CTO",
       company: "SecureBank Digital",
@@ -109,7 +109,7 @@ const Testimonials = () => {
             <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8 rounded-full"></div>
             <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
               Don't just take our word for it. Here's what our satisfied clients have to say about 
-              working with Zerolabs and the results we've delivered together.
+              working with Defite and the results we've delivered together.
             </p>
           </div>
 

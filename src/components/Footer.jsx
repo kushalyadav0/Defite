@@ -17,7 +17,7 @@ const Footer = () => {
           {/* Logo and Tagline */}
           <div className="mb-8">
             <h3 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
-              Zerolabs
+              Defite
             </h3>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
               Your trusted partner for innovative digital solutions. 
@@ -58,7 +58,7 @@ const Footer = () => {
           {/* Copyright and Links */}
           <div className="border-t border-gray-800 pt-6">
             <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8 text-sm text-gray-400">
-              <span>© {currentYear} Zerolabs. All rights reserved.</span>
+              <span>© {currentYear} Defite. All rights reserved.</span>
               <div className="flex space-x-6">
                 <button className="hover:text-white transition-colors duration-200 hover:underline">
                   Privacy Policy

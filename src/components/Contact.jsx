@@ -50,14 +50,14 @@ const Contact = () => {
     {
       icon: Mail,
       title: 'Email',
-      value: 'zerolabsorg@gmail.com',
+      value: 'hello@deite.in',
       description: 'Send us an email anytime',
       gradient: 'from-blue-500 to-purple-600'
     },
     {
       icon: Phone,
       title: 'Phone',
-      value: '+91 8077246637',
+      value: '+91 7023526817',
       description: 'all days from 8am to 11:59pm',
       gradient: 'from-green-500 to-teal-600'
     },
@@ -65,7 +65,7 @@ const Contact = () => {
       icon: MapPin,
       title: 'Office',
       value: 'Chandigarh',
-      description: 'Welcome to zero labs',
+      description: 'Welcome to Defite',
       gradient: 'from-orange-500 to-red-600'
     },
     {

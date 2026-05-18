@@ -58,12 +58,12 @@ const About = () => {
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
               About{' '}
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Zerolabs
+                Defite
               </span>
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8 rounded-full"></div>
             <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              At Zerolabs, we are passionate about transforming ideas into exceptional digital experiences. 
+              At Defite, we are passionate about transforming ideas into exceptional digital experiences. 
               Our team of expert developers specializes in delivering high-quality, comprehensive freelancing 
               services that bridge the gap between innovative concepts and market-ready solutions.
             </p>

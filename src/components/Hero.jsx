@@ -56,7 +56,7 @@ const Hero = () => {
             </span>{' '}
             <br />
             <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-              Zerolabs.
+              Defite.
             </span>
           </h1>
 
