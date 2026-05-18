@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Code, Server, Brain, Shield, ArrowRight } from 'lucide-react';
+import { Code, Server, Brain, Shield, ArrowRight, Layers } from 'lucide-react';
 
 const Services = () => {
   const servicesRef = useRef(null);
@@ -30,43 +30,59 @@ const Services = () => {
       description: [
         'Business websites & landing pages',
         'Performance optimization',
-        'Conversion-focused design',
-        {
-          heading: '🔹 Business Systems',
-          items: [
-            'CRM & customer tracking systems',
-            'Inventory & order management',
-            'Internal dashboards & admin panels'
-          ]
-        },
-        {
-          heading: '🔹 Automation & AI',
-          items: [
-            'WhatsApp & email automation',
-            'Lead tracking & follow-ups',
-            'AI chatbots & support systems'
-          ]
-        },
-        {
-          heading: '🔹 Product & MVP Development',
-          items: [
-            'Build and launch new ideas',
-            'Rapid prototyping',
-            'Scalable product architecture'
-          ]
-        },
-        {
-          heading: '🔹 Support & Maintenance',
-          items: [
-            'Ongoing support',
-            'Performance improvements',
-            'System upgrades & scaling'
-          ]
-        }
+        'Conversion-focused design'
       ],
       technologies: ['React.js', 'Tailwind CSS', 'HTML5', 'CSS3', 'JavaScript', 'Next.js', 'Vue.js'],
       gradient: 'from-blue-500 to-cyan-600',
       bgGradient: 'from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20'
+    },
+    {
+      title: 'Business Systems',
+      icon: Server,
+      description: [
+        'CRM & customer tracking systems',
+        'Inventory & order management',
+        'Internal dashboards & admin panels'
+      ],
+      technologies: ['Python', 'Django', 'Flask', 'PostgreSQL', 'Node.js', 'GraphQL'],
+      gradient: 'from-green-500 to-emerald-600',
+      bgGradient: 'from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20'
+    },
+    {
+      title: 'Automation & AI',
+      icon: Brain,
+      description: [
+        'WhatsApp & email automation',
+        'Lead tracking & follow-ups',
+        'AI chatbots & support systems'
+      ],
+      technologies: ['RAG Pipelines', 'AI Agents', 'LangChain', 'TensorFlow', 'PyTorch', 'OpenAI'],
+      gradient: 'from-purple-500 to-violet-600',
+      bgGradient: 'from-purple-50 to-violet-50 dark:from-purple-900/20 dark:to-violet-900/20'
+    },
+    {
+      title: 'Product & MVP Development',
+      icon: Layers,
+      description: [
+        'Build and launch new ideas',
+        'Rapid prototyping',
+        'Scalable product architecture'
+      ],
+      technologies: ['Figma', 'Next.js', 'React.js', 'Node.js', 'FastAPI', 'Docker'],
+      gradient: 'from-indigo-500 to-sky-600',
+      bgGradient: 'from-indigo-50 to-sky-50 dark:from-indigo-900/20 dark:to-sky-900/20'
+    },
+    {
+      title: 'Support & Maintenance',
+      icon: Shield,
+      description: [
+        'Ongoing support',
+        'Performance improvements',
+        'System upgrades & scaling'
+      ],
+      technologies: ['Monitoring', 'CI/CD', 'Cloud Security', 'AWS', 'Kubernetes', 'Logging'],
+      gradient: 'from-orange-500 to-red-600',
+      bgGradient: 'from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20'
     }
   ];
 
