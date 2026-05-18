@@ -25,36 +25,48 @@ const Services = () => {
 
   const services = [
     {
-      title: 'Frontend Development',
+      title: 'Websites & Digital Presence',
       icon: Code,
-      description: 'Create stunning, responsive, and interactive user interfaces that provide exceptional user experiences. We specialize in modern frontend technologies and frameworks to build scalable web applications that work seamlessly across all devices and browsers.',
+      description: [
+        'Business websites & landing pages',
+        'Performance optimization',
+        'Conversion-focused design',
+        {
+          heading: '🔹 Business Systems',
+          items: [
+            'CRM & customer tracking systems',
+            'Inventory & order management',
+            'Internal dashboards & admin panels'
+          ]
+        },
+        {
+          heading: '🔹 Automation & AI',
+          items: [
+            'WhatsApp & email automation',
+            'Lead tracking & follow-ups',
+            'AI chatbots & support systems'
+          ]
+        },
+        {
+          heading: '🔹 Product & MVP Development',
+          items: [
+            'Build and launch new ideas',
+            'Rapid prototyping',
+            'Scalable product architecture'
+          ]
+        },
+        {
+          heading: '🔹 Support & Maintenance',
+          items: [
+            'Ongoing support',
+            'Performance improvements',
+            'System upgrades & scaling'
+          ]
+        }
+      ],
       technologies: ['React.js', 'Tailwind CSS', 'HTML5', 'CSS3', 'JavaScript', 'Next.js', 'Vue.js'],
       gradient: 'from-blue-500 to-cyan-600',
       bgGradient: 'from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20'
-    },
-    {
-      title: 'Backend Development',
-      icon: Server,
-      description: 'Build robust, scalable, and secure server-side applications using industry-leading frameworks and best practices. Our backend solutions ensure optimal performance, data integrity, and seamless integration with frontend applications.',
-      technologies: ['Python', 'Django', 'Flask', 'FastAPI', 'Java Spring Boot', 'Node.js', 'PostgreSQL'],
-      gradient: 'from-green-500 to-emerald-600',
-      bgGradient: 'from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20'
-    },
-    {
-      title: 'AI/ML Solutions',
-      icon: Brain,
-      description: 'Harness the power of artificial intelligence and machine learning to create intelligent applications. We develop custom AI solutions including RAG pipelines, intelligent agents, and automated systems that drive business value.',
-      technologies: ['RAG Pipelines', 'AI Agents', 'LangChain', 'LangGraph', 'Machine Learning', 'TensorFlow', 'PyTorch'],
-      gradient: 'from-purple-500 to-violet-600',
-      bgGradient: 'from-purple-50 to-violet-50 dark:from-purple-900/20 dark:to-violet-900/20'
-    },
-    {
-      title: 'Secure Deployment',
-      icon: Shield,
-      description: 'Ensure your applications are production-ready with our comprehensive deployment and DevOps services. We implement security best practices, monitoring, and scalable infrastructure to keep your applications running smoothly.',
-      technologies: ['DevOps', 'Cloud Security', 'CI/CD', 'Docker', 'Kubernetes', 'AWS', 'Monitoring'],
-      gradient: 'from-orange-500 to-red-600',
-      bgGradient: 'from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20'
     }
   ];
 
@@ -100,11 +112,33 @@ const Services = () => {
                     {service.title}
                   </h3>
 
-                  <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                    {service.description}
-                  </p>
+                  <div className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                    <ul className="list-disc list-inside space-y-3">
+                      {service.description.map((item, index) =>
+                        typeof item === 'string' ? (
+                          <li key={index}>{item}</li>
+                        ) : (
+                          <li key={index} className="list-none space-y-2">
+                            <p className="font-semibold text-gray-900 dark:text-white">
+                              {item.heading}
+                            </p>
+                            <ul className="list-disc list-inside ml-6 space-y-1 text-sm text-gray-700 dark:text-gray-300">
+                              {item.items.map((subItem, subIndex) => (
+                                <li key={subIndex}>{subItem}</li>
+                              ))}
+                            </ul>
+                          </li>
+                        )
+                      )}
+                    </ul>
+                  </div>
 
-                  <div className="mb-6">
+                  <button className="group/btn flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 font-semibold transition-all duration-200 hover:translate-x-2">
+                    Learn More
+                    <ArrowRight className="ml-2 group-hover/btn:translate-x-1 transition-transform duration-200" size={16} />
+                  </button>
+
+                  <div className="mt-6">
                     <h4 className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-3 uppercase tracking-wide">
                       Technologies & Tools
                     </h4>
@@ -119,11 +153,6 @@ const Services = () => {
                       ))}
                     </div>
                   </div>
-
-                  <button className="group/btn flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 font-semibold transition-all duration-200 hover:translate-x-2">
-                    Learn More
-                    <ArrowRight className="ml-2 group-hover/btn:translate-x-1 transition-transform duration-200" size={16} />
-                  </button>
                 </div>
               </div>
             ))}

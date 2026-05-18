@@ -26,20 +26,20 @@ const About = () => {
   const values = [
     {
       icon: Award,
-      title: 'Professionalism',
-      description: 'We maintain the highest standards of quality and professionalism in every project we undertake.',
+      title: 'Business-First Thinking',
+      description: 'We understand your business before building anything.',
       gradient: 'from-blue-500 to-purple-600'
     },
     {
       icon: Zap,
-      title: 'Innovation',
-      description: 'We leverage cutting-edge technologies and innovative approaches to solve complex challenges.',
+      title: 'System-Oriented Approach',
+      description: 'We focus on building complete systems, not isolated features.',
       gradient: 'from-purple-500 to-pink-600'
     },
     {
       icon: Users,
-      title: 'Collaboration',
-      description: 'We work closely with our clients as partners, ensuring transparent communication throughout.',
+      title: 'Clear Communication',
+      description: 'Structured updates, defined timelines, no confusion.',
       gradient: 'from-green-500 to-teal-600'
     }
   ];
@@ -63,9 +63,9 @@ const About = () => {
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8 rounded-full"></div>
             <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              At Defite, we are passionate about transforming ideas into exceptional digital experiences. 
-              Our team of expert developers specializes in delivering high-quality, comprehensive freelancing 
-              services that bridge the gap between innovative concepts and market-ready solutions.
+              Defite is a technology partner focused on building systems that help businesses operate efficiently and scale with confidence.
+              <br />
+              We don’t just develop applications — we design and implement solutions that solve real operational problems, reduce manual work, and improve overall business performance.
             </p>
           </div>
 
@@ -94,9 +94,7 @@ const About = () => {
               Our Mission
             </h3>
             <p className="text-lg text-gray-700 dark:text-gray-200 max-w-3xl mx-auto leading-relaxed">
-              To empower businesses and entrepreneurs by providing world-class development services 
-              that turn visionary ideas into scalable, secure, and successful digital products. 
-              We believe in building long-term partnerships based on trust, excellence, and mutual growth.
+              To help businesses leverage technology to simplify operations, improve efficiency, and build scalable systems for long-term growth.
             </p>
           </div>
         </div>

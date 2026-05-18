@@ -44,7 +44,7 @@ const Hero = () => {
             <div className="flex items-center space-x-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-200 dark:border-gray-700">
               <Sparkles className="text-blue-600 dark:text-blue-400" size={16} />
               <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                Premium Freelancing Services
+                Build Systems. Scale Businesses.
               </span>
             </div>
           </div>
@@ -61,8 +61,8 @@ const Hero = () => {
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-            We build innovative digital solutions from concept to secure deployment, 
-            transforming your ideas into production-ready applications.
+            We help businesses reduce manual work, automate operations, 
+            and build scalable digital systems — from idea to deployment.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

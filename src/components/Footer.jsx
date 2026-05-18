@@ -20,8 +20,7 @@ const Footer = () => {
               Defite
             </h3>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Your trusted partner for innovative digital solutions. 
-              Transforming ideas into exceptional digital experiences.
+              Building systems that help businesses scale.
             </p>
           </div>
 

@@ -111,6 +111,9 @@ const Testimonials = () => {
               Don't just take our word for it. Here's what our satisfied clients have to say about 
               working with Defite and the results we've delivered together.
             </p>
+            <p className="text-base md:text-lg text-blue-700 dark:text-blue-300 font-semibold mt-6 max-w-4xl mx-auto">
+              Trusted by businesses to build systems that work
+            </p>
           </div>
 
           {/* Main Testimonial Display */}
