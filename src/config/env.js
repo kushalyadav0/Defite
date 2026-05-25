@@ -13,6 +13,12 @@ const envSchema = z.object({
   JWT_ACCESS_SECRET: z.string(),
 
   JWT_REFRESH_SECRET: z.string(),
+
+  ADMIN_NAME: z.string(),
+
+ADMIN_EMAIL: z.string(),
+
+ADMIN_PASSWORD: z.string(),
 })
 
 export const env = envSchema.parse(process.env)

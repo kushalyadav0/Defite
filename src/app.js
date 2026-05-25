@@ -4,6 +4,7 @@ import helmet from 'helmet'
 import compression from 'compression'
 import morgan from 'morgan'
 import cookieParser from 'cookie-parser'
+import path from 'path'
 
 import routes from './routes/index.js'
 
@@ -22,10 +23,19 @@ app.use(cookieParser())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+app.use(
+  '/uploads',
+  express.static(
+    path.join(process.cwd(), 'src/uploads')
+  )
+)
+
 app.use('/api/v1', routes)
 
 app.use(notFoundMiddleware)
 
 app.use(errorMiddleware)
+
+
 
 export default app
