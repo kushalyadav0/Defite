@@ -4,6 +4,7 @@ import healthRoutes from '../modules/health/health.routes.js'
 import authRoutes from '../modules/auth/auth.routes.js'
 import settingsRoutes from '../modules/settings/settings.routes.js'
 import uploadRoutes from '../modules/upload/upload.routes.js'
+import contactRoutes from '../modules/contact/contact.routes.js'
 
 const router = express.Router()
 
@@ -16,5 +17,7 @@ router.use('/cms', cmsRoutes)
 router.use('/settings', settingsRoutes)
 
 router.use('/upload', uploadRoutes)
+
+router.use('/contact', contactRoutes)
 
 export default router

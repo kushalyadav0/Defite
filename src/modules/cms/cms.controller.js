@@ -15,6 +15,8 @@ import { asyncHandler } from '../../utils/asyncHandler.js'
 
 import { sendResponse } from '../../utils/response.js'
 
+import { createAuditLog } from '../audit/audit.service.js'
+
 export const createPage = asyncHandler(
   async (req, res) => {
     const validatedData =
@@ -23,6 +25,15 @@ export const createPage = asyncHandler(
     const page = await createCMSPage(
       validatedData
     )
+    await createAuditLog({
+      action: 'CREATE',
+      module: 'CMS',
+      performedBy: req.user._id,
+
+      metadata: {
+        slug: page.slug,
+      },
+    })
 
     return sendResponse({
       res,
@@ -68,6 +79,15 @@ export const updatePage = asyncHandler(
       req.params.slug,
       validatedData
     )
+    await createAuditLog({
+      action: 'UPDATE',
+      module: 'CMS',
+      performedBy: req.user._id,
+
+      metadata: {
+        slug: page.slug,
+      },
+    })
 
     return sendResponse({
       res,
@@ -80,6 +100,15 @@ export const updatePage = asyncHandler(
 export const deletePage = asyncHandler(
   async (req, res) => {
     await deleteCMSPage(req.params.slug)
+    await createAuditLog({
+      action: 'DELETE',
+      module: 'CMS',
+      performedBy: req.user._id,
+
+      metadata: {
+        slug: req.params.slug,
+      },
+    })
 
     return sendResponse({
       res,

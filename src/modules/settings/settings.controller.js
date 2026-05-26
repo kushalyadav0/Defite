@@ -9,6 +9,8 @@ import { sendResponse } from '../../utils/response.js'
 
 import { updateSettingsValidation } from './settings.validation.js'
 
+import { createAuditLog } from '../audit/audit.service.js'
+
 export const getSettingsController =
   asyncHandler(async (req, res) => {
     const settings = await getSettings()
@@ -29,9 +31,16 @@ export const updateSettingsController =
       validatedData
     )
 
+    await createAuditLog({
+      action: 'UPDATE',
+      module: 'SETTINGS',
+      performedBy: req.user._id,
+    })
+
     return sendResponse({
       res,
       message: 'Settings updated',
       data: settings,
     })
-  })
+  }
+)
