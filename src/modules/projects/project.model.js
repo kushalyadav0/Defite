@@ -39,6 +39,15 @@ const projectSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    category: {
+  type: String,
+  default: '',
+},
+
+gradient: {
+  type: String,
+  default: 'from-blue-500 to-purple-600',
+},
   },
   {
     timestamps: true,

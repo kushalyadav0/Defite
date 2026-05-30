@@ -1,5 +1,4 @@
 import express from 'express'
-
 import {
   createPage,
   getAllPages,
@@ -7,19 +6,14 @@ import {
   updatePage,
   deletePage,
 } from './cms.controller.js'
-
 import { protect } from '../../middleware/auth.middleware.js'
-
 import { authorize } from '../../middleware/role.middleware.js'
-
 import { USER_ROLES } from '../auth/auth.constants.js'
 
 const router = express.Router()
 
-// Public
 router.get('/:slug', getPageBySlug)
 
-// Admin
 router.post(
   '/',
   protect,

@@ -2,11 +2,8 @@ import {
   createContactMessage,
   getAllContactMessages,
 } from './contact.service.js'
-
 import { createContactValidation } from './contact.validation.js'
-
 import { asyncHandler } from '../../utils/asyncHandler.js'
-
 import { sendResponse } from '../../utils/response.js'
 
 export const createContact =

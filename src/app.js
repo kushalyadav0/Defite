@@ -5,21 +5,39 @@ import compression from 'compression'
 import morgan from 'morgan'
 import cookieParser from 'cookie-parser'
 import path from 'path'
-
 import routes from './routes/index.js'
-
 import { errorMiddleware } from './middleware/error.middleware.js'
 import { notFoundMiddleware } from './middleware/notFound.middleware.js'
 
 const app = express()
 
-app.use(helmet())
+app.set('trust proxy', 1)
 
-app.use(cors())
+app.use(
+  helmet({
+    crossOriginResourcePolicy: {
+      policy: 'cross-origin',
+    },
+  })
+)
+
+app.use(
+  cors({
+    origin: [
+      'http://localhost:5173',
+      'http://localhost:5174',
+    ],
+    credentials: true,
+  })
+)
+
 app.use(compression())
-app.use(morgan('dev'))
-app.use(cookieParser())
 
+if (process.env.NODE_ENV !== 'test') {
+  app.use(morgan('dev'))
+}
+
+app.use(cookieParser())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
@@ -28,14 +46,10 @@ app.use(
   express.static(
     path.join(process.cwd(), 'src/uploads')
   )
-)
+);
 
 app.use('/api/v1', routes)
-
 app.use(notFoundMiddleware)
-
 app.use(errorMiddleware)
-
-
 
 export default app

@@ -15,10 +15,8 @@ import { USER_ROLES } from '../auth/auth.constants.js'
 
 const router = express.Router()
 
-// Public
 router.get('/', getProjectsController)
 
-// Admin
 router.post(
   '/',
   protect,

@@ -1,15 +1,11 @@
 import jwt from 'jsonwebtoken'
-
 import { env } from '../config/env.js'
-
 import { ApiError } from '../utils/ApiError.js'
-
 import { User } from '../modules/auth/auth.model.js'
 
 export const protect = async (req, res, next) => {
   try {
     const authHeader = req.headers.authorization
-
     if (
       !authHeader ||
       !authHeader.startsWith('Bearer ')
@@ -18,7 +14,6 @@ export const protect = async (req, res, next) => {
     }
 
     const token = authHeader.split(' ')[1]
-
     const decoded = jwt.verify(
       token,
       env.JWT_ACCESS_SECRET
@@ -31,7 +26,6 @@ export const protect = async (req, res, next) => {
     }
 
     req.user = user
-
     next()
   } catch (error) {
     next(error)

@@ -21,6 +21,10 @@ const settingsSchema = new mongoose.Schema(
       type: String,
       default: '',
     },
+    responseTime: {
+      type: String,
+      default: '< 24 Hours',
+    },
 
     logo: {
       type: String,

@@ -7,7 +7,6 @@ export const authorize = (...roles) => {
         new ApiError(403, 'Forbidden Access')
       )
     }
-
     next()
   }
 }
