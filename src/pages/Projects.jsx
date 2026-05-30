@@ -1,6 +1,7 @@
 import {
   useEffect,
   useState,
+  useRef,
 } from 'react';
 
 import DashboardLayout from '../layouts/DashboardLayout';
@@ -11,6 +12,8 @@ import {
   deleteProject,
 } from '../services/project.service';
 
+import { uploadImage } from '../services/upload.service';
+
 const Projects = () => {
   const [projects, setProjects] = useState(
     []
@@ -19,6 +22,9 @@ const Projects = () => {
   const [loading, setLoading] = useState(
     false
   );
+
+  const [uploading, setUploading] =
+    useState(false);
 
   const [formData, setFormData] = useState({
     title: '',
@@ -31,6 +37,8 @@ const Projects = () => {
       'from-blue-500 to-purple-600',
     technologies: '',
   });
+
+  const fileInputRef = useRef(null);
 
   // Fetch projects
   const fetchProjects = async () => {
@@ -53,6 +61,34 @@ const Projects = () => {
       ...formData,
       [e.target.name]: e.target.value,
     });
+  };
+
+  // Image Upload
+  const handleImageUpload = async (
+    e
+  ) => {
+    const file = e.target.files[0];
+
+    if (!file) return;
+
+    try {
+      setUploading(true);
+
+      const data = await uploadImage(
+        file
+      );
+
+      setFormData((prev) => ({
+        ...prev,
+        thumbnail: data.url,
+      }));
+    } catch (error) {
+      console.log(
+        error.response?.data || error
+      );
+    } finally {
+      setUploading(false);
+    }
   };
 
   // Create project
@@ -86,6 +122,12 @@ const Projects = () => {
           'from-blue-500 to-purple-600',
         technologies: '',
       });
+
+      // Reset file input
+      if (fileInputRef.current) {
+        fileInputRef.current.value =
+          '';
+      };
     } catch (error) {
       console.log(error);
     } finally {
@@ -148,14 +190,32 @@ const Projects = () => {
               required
             />
 
-            <input
-              type="text"
-              name="thumbnail"
-              placeholder="Thumbnail URL"
-              value={formData.thumbnail}
-              onChange={handleChange}
-              className="border px-4 py-3 rounded-lg"
-            />
+            {/* Thumbnail Upload */}
+            <div className="border rounded-lg">
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                onChange={
+                  handleImageUpload
+                }
+                className="w-full border border-gray-300 rounded-lg px-4 py-3 file:border file:border-gray-400 file:bg-transparent file:px-3 file:py-1 file:rounded-md file:mr-4"
+              />
+
+              {uploading && (
+                <p className="text-sm text-blue-600">
+                  Uploading image...
+                </p>
+              )}
+
+              {formData.thumbnail && (
+                <img
+                  src={`http://localhost:5000${formData.thumbnail}`}
+                  alt="Preview"
+                  className="w-32 h-32 object-cover rounded-lg border"
+                />
+              )}
+            </div>
 
             <input
               type="text"
@@ -195,7 +255,9 @@ const Projects = () => {
 
             <button
               type="submit"
-              disabled={loading}
+              disabled={
+                loading || uploading
+              }
               className="bg-black text-white py-3 rounded-lg md:col-span-2"
             >
               {loading
@@ -217,14 +279,23 @@ const Projects = () => {
                 key={project._id}
                 className="border rounded-xl p-4 flex items-center justify-between"
               >
-                <div>
-                  <h3 className="text-xl font-bold">
-                    {project.title}
-                  </h3>
+                <div className="flex items-center gap-4">
+                  {/* Project Image */}
+                  <img
+                    src={`http://localhost:5000${project.thumbnail}`}
+                    alt={project.title}
+                    className="w-20 h-20 object-cover rounded-lg border"
+                  />
 
-                  <p className="text-gray-600">
-                    {project.category}
-                  </p>
+                  <div>
+                    <h3 className="text-xl font-bold">
+                      {project.title}
+                    </h3>
+
+                    <p className="text-gray-600">
+                      {project.category}
+                    </p>
+                  </div>
                 </div>
 
                 <button

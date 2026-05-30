@@ -1,9 +1,6 @@
 import { useState } from 'react';
-
 import { useNavigate } from 'react-router-dom';
-
 import { loginAdmin } from '../services/auth.service';
-
 import { useAuth } from '../context/AuthContext';
 
 const Login = () => {
@@ -32,7 +29,6 @@ const Login = () => {
       );
       console.log(data);
 
-    //   login(data.token);
     login(data.accessToken);
 
       navigate('/dashboard');

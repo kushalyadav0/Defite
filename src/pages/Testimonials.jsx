@@ -1,6 +1,7 @@
 import {
   useEffect,
   useState,
+  useRef,
 } from 'react';
 
 import DashboardLayout from '../layouts/DashboardLayout';
@@ -11,6 +12,8 @@ import {
   deleteTestimonial,
 } from '../services/testimonial.service';
 
+import { uploadImage } from '../services/upload.service';
+
 const Testimonials = () => {
   const [testimonials, setTestimonials] =
     useState([]);
@@ -18,6 +21,11 @@ const Testimonials = () => {
   const [loading, setLoading] = useState(
     false
   );
+
+  const [uploading, setUploading] =
+    useState(false);
+
+  const fileInputRef = useRef(null);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -53,6 +61,34 @@ const Testimonials = () => {
     });
   };
 
+  // Image Upload
+  const handleImageUpload = async (
+    e
+  ) => {
+    const file = e.target.files[0];
+
+    if (!file) return;
+
+    try {
+      setUploading(true);
+
+      const data = await uploadImage(
+        file
+      );
+
+      setFormData((prev) => ({
+        ...prev,
+        image: data.url,
+      }));
+    } catch (error) {
+      console.log(
+        error.response?.data || error
+      );
+    } finally {
+      setUploading(false);
+    }
+  };
+
   // Create
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -74,6 +110,12 @@ const Testimonials = () => {
         image: '',
         rating: 5,
       });
+
+      // Reset file input
+      if (fileInputRef.current) {
+        fileInputRef.current.value =
+          '';
+      }
     } catch (error) {
       console.log(
         error.response?.data || error
@@ -139,14 +181,30 @@ const Testimonials = () => {
               className="border px-4 py-3 rounded-lg"
             />
 
-            <input
-              type="text"
-              name="image"
-              placeholder="Image URL"
-              value={formData.image}
-              onChange={handleChange}
-              className="border px-4 py-3 rounded-lg"
-            />
+            {/* Image Upload */}
+            <div className="border rounded-lg">
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                onChange={handleImageUpload}
+                className="w-full border border-gray-300 rounded-lg px-4 py-3 file:border file:border-gray-400 file:bg-transparent file:px-3 file:py-1 file:rounded-md file:mr-4"
+              />
+
+              {uploading && (
+                <p className="text-blue-600 text-sm">
+                  Uploading image...
+                </p>
+              )}
+
+              {formData.image && (
+                <img
+                  src={`http://localhost:5000${formData.image}`}
+                  alt="Preview"
+                  className="w-24 h-24 rounded-full object-cover border"
+                />
+              )}
+            </div>
 
             <input
               type="number"
@@ -171,7 +229,9 @@ const Testimonials = () => {
 
             <button
               type="submit"
-              disabled={loading}
+              disabled={
+                loading || uploading
+              }
               className="bg-black text-white py-3 rounded-lg md:col-span-2"
             >
               {loading
@@ -194,20 +254,29 @@ const Testimonials = () => {
                   key={testimonial._id}
                   className="border rounded-xl p-4 flex items-center justify-between"
                 >
-                  <div>
-                    <h3 className="text-xl font-bold">
-                      {testimonial.name}
-                    </h3>
+                  <div className="flex items-center gap-4">
+                    {/* Client Image */}
+                    <img
+                      src={`http://localhost:5000${testimonial.image}`}
+                      alt={testimonial.name}
+                      className="w-16 h-16 rounded-full object-cover border"
+                    />
 
-                    <p className="text-gray-600">
-                      {
-                        testimonial.designation
-                      }
-                    </p>
+                    <div>
+                      <h3 className="text-xl font-bold">
+                        {testimonial.name}
+                      </h3>
 
-                    <p className="mt-2 text-gray-700">
-                      {testimonial.message}
-                    </p>
+                      <p className="text-gray-600">
+                        {
+                          testimonial.designation
+                        }
+                      </p>
+
+                      <p className="mt-2 text-gray-700">
+                        {testimonial.message}
+                      </p>
+                    </div>
                   </div>
 
                   <button

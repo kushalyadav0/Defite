@@ -6,43 +6,36 @@ import {
   Settings,
   Mail,
 } from 'lucide-react';
-
 import { Link, useLocation } from 'react-router-dom';
 
 const Sidebar = () => {
   const location = useLocation();
-
   const menuItems = [
     {
       name: 'Dashboard',
       path: '/dashboard',
       icon: LayoutDashboard,
     },
-
     {
       name: 'Projects',
       path: '/projects',
       icon: FolderKanban,
     },
-
     {
       name: 'Testimonials',
       path: '/testimonials',
       icon: MessageSquare,
     },
-
     {
       name: 'CMS',
       path: '/cms',
       icon: FileText,
     },
-
     {
       name: 'Settings',
       path: '/settings',
       icon: Settings,
     },
-
     {
       name: 'Contacts',
       path: '/contacts',
