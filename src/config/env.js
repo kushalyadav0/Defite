@@ -8,7 +8,7 @@ const envSchema = z.object({
 
   NODE_ENV: z.string().default('development'),
 
-  MONGO_URL: z.string(),
+  MONGO_URI: z.string(),
 
   JWT_ACCESS_SECRET: z.string(),
 
