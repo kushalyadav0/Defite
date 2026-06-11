@@ -1,5 +1,5 @@
 import axios from 'axios'
 
 export const api = axios.create({
-  baseURL: 'https://defite.cloud/',
+  baseURL: 'https://defite.cloud/api/v1',
 })
