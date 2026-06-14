@@ -15,13 +15,9 @@ import {
 import { uploadImage } from '../services/upload.service';
 
 const Projects = () => {
-  const [projects, setProjects] = useState(
-    []
-  );
+  const [projects, setProjects] = useState([]);
 
-  const [loading, setLoading] = useState(
-    false
-  );
+  const [loading, setLoading] = useState(false);
 
   const [uploading, setUploading] =
     useState(false);
@@ -40,12 +36,24 @@ const Projects = () => {
 
   const fileInputRef = useRef(null);
 
-  // Fetch projects
+  const formatImageUrl = (url) => {
+    if (!url) return '';
+
+    if (
+      url.startsWith('http://') ||
+      url.startsWith('https://')
+    ) {
+      return url;
+    }
+
+    return `https://defite.cloud${url}`;
+  };
+
   const fetchProjects = async () => {
     try {
       const data = await getProjects();
 
-      setProjects(data);
+      setProjects(data || []);
     } catch (error) {
       console.log(error);
     }
@@ -55,15 +63,14 @@ const Projects = () => {
     fetchProjects();
   }, []);
 
-  // Input change
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [e.target.name]:
+        e.target.value,
     });
   };
 
-  // Image Upload
   const handleImageUpload = async (
     e
   ) => {
@@ -80,7 +87,11 @@ const Projects = () => {
 
       setFormData((prev) => ({
         ...prev,
-        thumbnail: data.url,
+        thumbnail:
+          data?.url ||
+          data?.path ||
+          data?.filePath ||
+          '',
       }));
     } catch (error) {
       console.log(
@@ -91,7 +102,6 @@ const Projects = () => {
     }
   };
 
-  // Create project
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -100,11 +110,13 @@ const Projects = () => {
 
       const payload = {
         ...formData,
-
         technologies:
           formData.technologies
             .split(',')
-            .map((tech) => tech.trim()),
+            .map((tech) =>
+              tech.trim()
+            )
+            .filter(Boolean),
       };
 
       await createProject(payload);
@@ -123,11 +135,10 @@ const Projects = () => {
         technologies: '',
       });
 
-      // Reset file input
       if (fileInputRef.current) {
         fileInputRef.current.value =
           '';
-      };
+      }
     } catch (error) {
       console.log(error);
     } finally {
@@ -135,7 +146,6 @@ const Projects = () => {
     }
   };
 
-  // Delete
   const handleDelete = async (id) => {
     try {
       await deleteProject(id);
@@ -149,7 +159,6 @@ const Projects = () => {
   return (
     <DashboardLayout>
       <div>
-        {/* Heading */}
         <div className="mb-10">
           <h1 className="text-4xl font-bold">
             Projects
@@ -160,7 +169,6 @@ const Projects = () => {
           </p>
         </div>
 
-        {/* Form */}
         <div className="bg-white p-6 rounded-xl shadow mb-10">
           <h2 className="text-2xl font-semibold mb-6">
             Add Project
@@ -190,8 +198,7 @@ const Projects = () => {
               required
             />
 
-            {/* Thumbnail Upload */}
-            <div className="border rounded-lg">
+            <div className="border rounded-lg p-3">
               <input
                 ref={fileInputRef}
                 type="file"
@@ -203,16 +210,18 @@ const Projects = () => {
               />
 
               {uploading && (
-                <p className="text-sm text-blue-600">
+                <p className="text-sm text-blue-600 mt-2">
                   Uploading image...
                 </p>
               )}
 
               {formData.thumbnail && (
                 <img
-                  src={`http://localhost:5000${formData.thumbnail}`}
+                  src={formatImageUrl(
+                    formData.thumbnail
+                  )}
                   alt="Preview"
-                  className="w-32 h-32 object-cover rounded-lg border"
+                  className="w-20 h-20 object-cover rounded-lg border mt-3"
                 />
               )}
             </div>
@@ -239,7 +248,9 @@ const Projects = () => {
               type="text"
               name="technologies"
               placeholder="React, Node.js"
-              value={formData.technologies}
+              value={
+                formData.technologies
+              }
               onChange={handleChange}
               className="border px-4 py-3 rounded-lg"
             />
@@ -247,7 +258,9 @@ const Projects = () => {
             <textarea
               name="description"
               placeholder="Description"
-              value={formData.description}
+              value={
+                formData.description
+              }
               onChange={handleChange}
               className="border px-4 py-3 rounded-lg md:col-span-2"
               rows={4}
@@ -267,47 +280,57 @@ const Projects = () => {
           </form>
         </div>
 
-        {/* Projects List */}
         <div className="bg-white p-6 rounded-xl shadow">
           <h2 className="text-2xl font-semibold mb-6">
             All Projects
           </h2>
 
           <div className="space-y-4">
-            {projects.map((project) => (
-              <div
-                key={project._id}
-                className="border rounded-xl p-4 flex items-center justify-between"
-              >
-                <div className="flex items-center gap-4">
-                  {/* Project Image */}
-                  <img
-                    src={`http://localhost:5000${project.thumbnail}`}
-                    alt={project.title}
-                    className="w-20 h-20 object-cover rounded-lg border"
-                  />
-
-                  <div>
-                    <h3 className="text-xl font-bold">
-                      {project.title}
-                    </h3>
-
-                    <p className="text-gray-600">
-                      {project.category}
-                    </p>
-                  </div>
-                </div>
-
-                <button
-                  onClick={() =>
-                    handleDelete(project._id)
-                  }
-                  className="bg-red-500 text-white px-4 py-2 rounded-lg"
+            {projects.map(
+              (project) => (
+                <div
+                  key={project._id}
+                  className="border rounded-xl p-4 flex items-center justify-between"
                 >
-                  Delete
-                </button>
-              </div>
-            ))}
+                  <div className="flex items-center gap-4">
+                    <img
+                      src={formatImageUrl(
+                        project.thumbnail
+                      )}
+                      alt={
+                        project.title
+                      }
+                      className="w-20 h-20 object-cover rounded-lg border"
+                    />
+
+                    <div>
+                      <h3 className="text-xl font-bold">
+                        {
+                          project.title
+                        }
+                      </h3>
+
+                      <p className="text-gray-600">
+                        {
+                          project.category
+                        }
+                      </p>
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={() =>
+                      handleDelete(
+                        project._id
+                      )
+                    }
+                    className="bg-red-500 text-white px-4 py-2 rounded-lg"
+                  >
+                    Delete
+                  </button>
+                </div>
+              )
+            )}
           </div>
         </div>
       </div>

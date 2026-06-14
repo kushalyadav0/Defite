@@ -23,16 +23,30 @@ const Settings = () => {
     logo: '',
   });
 
-  const [loading, setLoading] = useState(
-    false
-  );
+  const [loading, setLoading] =
+    useState(false);
 
   const [uploading, setUploading] =
     useState(false);
 
   const fileInputRef = useRef(null);
 
-  // Fetch settings
+  const formatImageUrl = (url) => {
+    if (!url) return '';
+
+    if (
+      url.startsWith('http://') ||
+      url.startsWith('https://')
+    ) {
+      return url;
+    }
+
+    return `https://defite.cloud${url.startsWith('/')
+        ? url
+        : `/${url}`
+      }`;
+  };
+
   const fetchSettings = async () => {
     try {
       const data = await getSettings();
@@ -40,16 +54,12 @@ const Settings = () => {
       setFormData({
         companyName:
           data.companyName || '',
-
         email: data.email || '',
-
         phone: data.phone || '',
-
-        address: data.address?.trim() || '',
-
+        address:
+          data.address?.trim() || '',
         responseTime:
           data.responseTime || '',
-
         logo: data.logo || '',
       });
     } catch (error) {
@@ -63,16 +73,14 @@ const Settings = () => {
     fetchSettings();
   }, []);
 
-  // Handle input
   const handleChange = (e) => {
     setFormData({
       ...formData,
-
-      [e.target.name]: e.target.value,
+      [e.target.name]:
+        e.target.value,
     });
   };
 
-  // Logo Upload
   const handleImageUpload = async (
     e
   ) => {
@@ -89,7 +97,11 @@ const Settings = () => {
 
       setFormData((prev) => ({
         ...prev,
-        logo: data.url,
+        logo:
+          data?.url ||
+          data?.path ||
+          data?.filePath ||
+          '',
       }));
     } catch (error) {
       console.log(
@@ -100,7 +112,6 @@ const Settings = () => {
     }
   };
 
-  // Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -109,17 +120,12 @@ const Settings = () => {
 
       await updateSettings(formData);
 
-      // Reset file input
       if (fileInputRef.current) {
         fileInputRef.current.value =
           '';
       }
 
-      // Remove preview after update
-      setFormData((prev) => ({
-        ...prev,
-        logo: '',
-      }));
+      await fetchSettings();
 
       alert('Settings Updated');
     } catch (error) {
@@ -134,34 +140,33 @@ const Settings = () => {
   return (
     <DashboardLayout>
       <div>
-        {/* Heading */}
         <div className="mb-10">
           <h1 className="text-4xl font-bold">
             Settings
           </h1>
 
           <p className="text-gray-600 mt-2">
-            Manage company settings here.
+            Manage company settings
+            here.
           </p>
         </div>
 
-        {/* Form */}
         <div className="bg-white p-6 rounded-xl shadow">
           <form
             onSubmit={handleSubmit}
             className="grid grid-cols-1 md:grid-cols-2 gap-4"
           >
-            {/* Company Name */}
             <input
               type="text"
               name="companyName"
               placeholder="Company Name"
-              value={formData.companyName}
+              value={
+                formData.companyName
+              }
               onChange={handleChange}
               className="border px-4 py-3 rounded-lg"
             />
 
-            {/* Email */}
             <input
               type="email"
               name="email"
@@ -171,7 +176,6 @@ const Settings = () => {
               className="border px-4 py-3 rounded-lg"
             />
 
-            {/* Phone */}
             <input
               type="text"
               name="phone"
@@ -181,34 +185,37 @@ const Settings = () => {
               className="border px-4 py-3 rounded-lg"
             />
 
-            {/* Address */}
-        <input
-  type="text"
-  name="address"
-  placeholder="Enter Company Address"
-  value={formData.address || ''}
-  onChange={handleChange}
-  className="border px-4 py-3 rounded-lg"
-/>
-
-            {/* Response Time */}
             <input
               type="text"
-              name="responseTime"
-              placeholder="Response Time"
-              value={formData.responseTime}
+              name="address"
+              placeholder="Enter Company Address"
+              value={
+                formData.address || ''
+              }
               onChange={handleChange}
               className="border px-4 py-3 rounded-lg"
             />
 
-            {/* Logo Upload */}
+            <input
+              type="text"
+              name="responseTime"
+              placeholder="Response Time"
+              value={
+                formData.responseTime
+              }
+              onChange={handleChange}
+              className="border px-4 py-3 rounded-lg"
+            />
+
             <div className="space-y-3">
               <input
                 ref={fileInputRef}
                 type="file"
                 accept="image/*"
-                onChange={handleImageUpload}
-                className="w-full border border-black-300 rounded-lg px-4 py-3 file:border file:border-gray-400 file:bg-transparent file:px-3 file:py-1 file:rounded-md file:mr-4"
+                onChange={
+                  handleImageUpload
+                }
+                className="w-full border border-gray-300 rounded-lg px-4 py-3 file:border file:border-gray-400 file:bg-transparent file:px-3 file:py-1 file:rounded-md file:mr-4"
               />
 
               {uploading && (
@@ -220,14 +227,21 @@ const Settings = () => {
               {formData.logo &&
                 !uploading && (
                   <img
-                    src={`http://localhost:5000${formData.logo}`}
+                    src={formatImageUrl(
+                      formData.logo
+                    )}
                     alt="Logo Preview"
+                    onError={(e) => {
+                      e.currentTarget.onerror =
+                        null;
+                      e.currentTarget.src =
+                        '/fallback-logo.png';
+                    }}
                     className="w-24 h-24 object-cover rounded-lg border"
                   />
                 )}
             </div>
 
-            {/* Button */}
             <button
               type="submit"
               disabled={
