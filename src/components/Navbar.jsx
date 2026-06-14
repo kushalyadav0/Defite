@@ -19,6 +19,19 @@ const Navbar = ({
 
   const { settings } = useAppContext();
 
+  const formatImageUrl = (url) => {
+    if (!url) return '';
+
+    if (
+      url.startsWith('http://') ||
+      url.startsWith('https://')
+    ) {
+      return url;
+    }
+
+    return `https://defite.cloud${url}`;
+  };
+
   const scrollToSection = (
     sectionId
   ) => {
@@ -39,6 +52,7 @@ const Navbar = ({
     'Testimonials',
     'Contact',
   ];
+  
 
   return (
     <nav className="fixed top-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 z-50 transition-all duration-300">
@@ -51,15 +65,20 @@ const Navbar = ({
               scrollToSection('home')
             }
           >
-            <img
-              src={
-                settings?.logo
-                  ? `http://localhost:5000${settings.logo}`
-                  : '/fallback-logo.png'
-              }
-              alt="Defite logo"
-              className="h-16 w-auto object-contain"
-            />
+    <img
+  src={
+    settings?.logo
+      ? formatImageUrl(settings.logo)
+      : '/fallback-logo.png'
+  }
+  alt="Defite logo"
+  onError={(e) => {
+    e.currentTarget.onerror = null;
+    e.currentTarget.src =
+      '/fallback-logo.png';
+  }}
+  className="h-16 w-auto object-contain"
+/>
           </div>
 
           {/* Desktop Navigation */}

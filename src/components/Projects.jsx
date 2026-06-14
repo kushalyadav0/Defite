@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ArrowRight, ExternalLink, Github } from 'lucide-react';
-
 import { getProjects } from '../services/project.service';
 
 const Projects = () => {
@@ -8,12 +7,27 @@ const Projects = () => {
 
   const [projects, setProjects] = useState([]);
 
+  const formatImageUrl = (url) => {
+    if (!url) return '';
+
+    if (
+      url.startsWith('http://') ||
+      url.startsWith('https://')
+    ) {
+      return url;
+    }
+
+    return `https://defite.cloud${url}`;
+  };
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('animate-fade-in-up');
+            entry.target.classList.add(
+              'animate-fade-in-up'
+            );
           }
         });
       },
@@ -27,8 +41,7 @@ const Projects = () => {
     const fetchProjects = async () => {
       try {
         const data = await getProjects();
-
-        setProjects(data);
+        setProjects(data || []);
       } catch (error) {
         console.log(error);
       }
@@ -84,14 +97,16 @@ const Projects = () => {
                 <div className="relative overflow-hidden">
 <img
   src={
-    project.image ||
-    '/fallback-project.png'
+    project.thumbnail
+      ? formatImageUrl(
+          project.thumbnail
+        )
+      : '/fallback-project.png'
   }
   alt={project.title}
   onError={(e) => {
-    e.target.onerror = null;
-
-    e.target.src =
+    e.currentTarget.onerror = null;
+    e.currentTarget.src =
       '/fallback-project.png';
   }}
   className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
