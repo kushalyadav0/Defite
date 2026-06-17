@@ -19,14 +19,31 @@ const Testimonials = () => {
   const [testimonials, setTestimonials] =
     useState([]);
 
-  const [currentTestimonial,
-    setCurrentTestimonial] =
-    useState(0);
+  const [
+    currentTestimonial,
+    setCurrentTestimonial,
+  ] = useState(0);
 
   const testimonialsRef =
     useRef(null);
 
-  // Fetch
+  const formatImageUrl = (url) => {
+    if (!url) return '';
+
+    if (
+      url.startsWith('http://') ||
+      url.startsWith('https://')
+    ) {
+      return url;
+    }
+
+    return `https://defite.cloud${
+      url.startsWith('/')
+        ? url
+        : `/${url}`
+    }`;
+  };
+
   const fetchTestimonials =
     async () => {
       try {
@@ -37,7 +54,7 @@ const Testimonials = () => {
       } catch (error) {
         console.log(
           error.response?.data ||
-          error
+            error
         );
       }
     };
@@ -46,10 +63,6 @@ const Testimonials = () => {
     fetchTestimonials();
   }, []);
 
-  // Animation
-  
-
-  // Auto rotate
   useEffect(() => {
     if (!testimonials.length)
       return;
@@ -67,17 +80,15 @@ const Testimonials = () => {
       clearInterval(interval);
   }, [testimonials]);
 
-  // Empty state
   if (!testimonials.length) {
     return null;
   }
 
   const active =
     testimonials[
-    currentTestimonial
+      currentTestimonial
     ] || testimonials[0];
 
-  // Next
   const nextTestimonial = () => {
     setCurrentTestimonial(
       (prev) =>
@@ -86,7 +97,6 @@ const Testimonials = () => {
     );
   };
 
-  // Prev
   const prevTestimonial = () => {
     setCurrentTestimonial(
       (prev) =>
@@ -97,35 +107,22 @@ const Testimonials = () => {
     );
   };
 
-  if (!testimonials.length) {
-    return (
-      <section
-        id="testimonials"
-        className="py-20"
-      >
-        <div className="text-center">
-          Loading testimonials...
-        </div>
-      </section>
-    );
-  }
-
   return (
-
     <section
-
       id="testimonials"
       className="py-20 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden"
     >
-      {/* Background */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-20 -right-20 w-80 h-80 bg-gradient-to-br from-blue-200/20 to-purple-200/20 rounded-full blur-3xl"></div>
 
         <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-gradient-to-br from-purple-200/20 to-pink-200/20 rounded-full blur-3xl"></div>
       </div>
 
-     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div ref={testimonialsRef} className="transform translate-y-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div
+          ref={testimonialsRef}
+          className="transform translate-y-10"
+        >
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
               What Our{' '}
@@ -133,21 +130,26 @@ const Testimonials = () => {
                 Clients Say
               </span>
             </h2>
+
             <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8 rounded-full"></div>
+
             <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              Don't just take our word for it. Here's what our satisfied clients have to say about 
-              working with Defite and the results we've delivered together.
+              Don't just take our word for it.
+              Here's what our satisfied
+              clients have to say about
+              working with Defite and the
+              results we've delivered
+              together.
             </p>
+
             <p className="text-base md:text-lg text-blue-700 dark:text-blue-300 font-semibold mt-6 max-w-4xl mx-auto">
-              Trusted by businesses to build systems that work
+              Trusted by businesses to
+              build systems that work
             </p>
           </div>
 
-
-          {/* Main Card */}
           <div className="relative max-w-5xl mx-auto mb-12">
             <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 md:p-12 border border-gray-200 dark:border-gray-700 relative overflow-hidden">
-              {/* Quote */}
               <div className="absolute top-6 right-6 opacity-10">
                 <Quote
                   size={80}
@@ -155,11 +157,13 @@ const Testimonials = () => {
                 />
               </div>
 
-              {/* Stars */}
               <div className="flex justify-center mb-6">
-                {[...Array(
-                  active?.rating || 5
-                )].map((_, i) => (
+                {[
+                  ...Array(
+                    active?.rating ||
+                      5
+                  ),
+                ].map((_, i) => (
                   <Star
                     key={i}
                     className="text-yellow-400 fill-current mr-1"
@@ -168,29 +172,27 @@ const Testimonials = () => {
                 ))}
               </div>
 
-              {/* Message */}
               <blockquote className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8 italic text-center leading-relaxed relative z-10">
                 "
                 {active?.message}
                 "
               </blockquote>
 
-              {/* Author */}
               <div className="flex items-center justify-center space-x-4">
                 <img
                   src={
                     active?.image
-                      ? `http://localhost:5000${active.image}`
+                      ? formatImageUrl(
+                          active.image
+                        )
                       : '/fallback-project.png'
                   }
-                  alt={
-                    active?.name
-                  }
+                  alt={active?.name}
                   onError={(e) => {
-                    e.target.onerror =
+                    e.currentTarget.onerror =
                       null;
 
-                    e.target.src =
+                    e.currentTarget.src =
                       '/fallback-project.png';
                   }}
                   className="w-16 h-16 rounded-full object-cover border-4 border-white shadow-lg"
@@ -210,7 +212,6 @@ const Testimonials = () => {
               </div>
             </div>
 
-            {/* Prev */}
             <button
               onClick={
                 prevTestimonial
@@ -223,7 +224,6 @@ const Testimonials = () => {
               />
             </button>
 
-            {/* Next */}
             <button
               onClick={
                 nextTestimonial
@@ -237,7 +237,6 @@ const Testimonials = () => {
             </button>
           </div>
 
-          {/* Dots */}
           <div className="flex justify-center space-x-3">
             {testimonials.map(
               (_, index) => (
@@ -248,11 +247,12 @@ const Testimonials = () => {
                       index
                     )
                   }
-                  className={`w-3 h-3 rounded-full transition-all duration-300 hover:scale-125 ${index ===
-                      currentTestimonial
+                  className={`w-3 h-3 rounded-full transition-all duration-300 hover:scale-125 ${
+                    index ===
+                    currentTestimonial
                       ? 'bg-gradient-to-r from-blue-600 to-purple-600 shadow-lg'
                       : 'bg-gray-300 dark:bg-gray-600'
-                    }`}
+                  }`}
                 />
               )
             )}
@@ -260,7 +260,6 @@ const Testimonials = () => {
         </div>
       </div>
 
-      {/* IMPORTANT */}
       <style>{`
         @keyframes fade-in-up {
           from {
