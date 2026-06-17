@@ -199,7 +199,7 @@ const Testimonials = () => {
 
               {formData.image && (
                 <img
-                  src={`http://localhost:5000${formData.image}`}
+                  src={`http://defite.cloud${formData.image}`}
                   alt="Preview"
                   className="w-24 h-24 rounded-full object-cover border"
                 />
@@ -257,7 +257,7 @@ const Testimonials = () => {
                   <div className="flex items-center gap-4">
                     {/* Client Image */}
                     <img
-                      src={`http://localhost:5000${testimonial.image}`}
+                      src={`http://defite.cloud${testimonial.image}`}
                       alt={testimonial.name}
                       className="w-16 h-16 rounded-full object-cover border"
                     />
