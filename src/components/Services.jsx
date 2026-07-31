@@ -90,7 +90,7 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-20 bg-gray-50 dark:bg-gray-900 relative overflow-hidden">
+    <section id="solutions" className="py-20 bg-gray-50 dark:bg-gray-900 relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-40 -right-20 w-80 h-80 bg-gradient-to-br from-blue-200/30 to-purple-200/30 dark:from-blue-800/20 dark:to-purple-800/20 rounded-full blur-3xl"></div>
