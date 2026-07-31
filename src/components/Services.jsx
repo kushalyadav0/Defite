@@ -25,24 +25,26 @@ const Services = () => {
 
   const services = [
     {
-      title: 'Websites & Digital Presence',
+      title: 'Web & Product Development',
       icon: Code,
       description: [
-        'Business websites & landing pages',
-        'Performance optimization',
-        'Conversion-focused design'
+        'Corporate websites',
+        'Customer portals',
+        'SaaS platforms',
+        'Ecommerce Solutions'
       ],
       technologies: ['React.js', 'Tailwind CSS', 'HTML5', 'CSS3', 'JavaScript', 'Next.js', 'Vue.js'],
       gradient: 'from-blue-500 to-cyan-600',
       bgGradient: 'from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20'
     },
     {
-      title: 'Business Systems',
+      title: 'Enterprise Solutions',
       icon: Server,
       description: [
-        'CRM & customer tracking systems',
-        'Inventory & order management',
-        'Internal dashboards & admin panels'
+        'CRM Systems',
+        'ERP Solutions',
+        'Internal Dashboards',
+        'Workflow Automation'
       ],
       technologies: ['Python', 'Django', 'Flask', 'PostgreSQL', 'Node.js', 'GraphQL'],
       gradient: 'from-green-500 to-emerald-600',
@@ -73,12 +75,13 @@ const Services = () => {
       bgGradient: 'from-indigo-50 to-sky-50 dark:from-indigo-900/20 dark:to-sky-900/20'
     },
     {
-      title: 'Support & Maintenance',
+      title: 'Data & Analytics',
       icon: Shield,
       description: [
-        'Ongoing support',
-        'Performance improvements',
-        'System upgrades & scaling'
+        'BI Dashboards',
+        'Reporting',
+        'Data Warehousing',
+        'ETL Pipelines'
       ],
       technologies: ['Monitoring', 'CI/CD', 'Cloud Security', 'AWS', 'Kubernetes', 'Logging'],
       gradient: 'from-orange-500 to-red-600',
@@ -100,13 +103,12 @@ const Services = () => {
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
               Our{' '}
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Services
+                Solutions
               </span>
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8 rounded-full"></div>
             <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              From frontend to backend, from AI solutions to secure deployment, we offer comprehensive 
-              development services to bring your vision to life with cutting-edge technology and expertise.
+            We deliver end-to-end software solutions tailored to business needs, from enterprise applications and cloud platforms to AI-driven automation and digital products.
             </p>
           </div>
 

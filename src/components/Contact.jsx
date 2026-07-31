@@ -84,68 +84,68 @@ const Contact = () => {
   };
 
   const contactInfo = [
-  {
-    icon: Mail,
+    {
+      icon: Mail,
 
-    title: 'Email',
+      title: 'Email',
 
-    value:
-      settings?.email ||
-      'hello@deite.in',
+      value:
+        settings?.email ||
+        'hello@deite.in',
 
-    description: 'Reach out anytime',
+      description: 'Reach out anytime',
 
-    gradient:
-      'from-blue-500 to-purple-600',
-  },
+      gradient:
+        'from-blue-500 to-purple-600',
+    },
 
-  {
-    icon: Phone,
+    {
+      icon: Phone,
 
-    title: 'Phone',
+      title: 'Phone',
 
-    value:
-      settings?.phone ||
-      '+91 7023526817',
+      value:
+        settings?.phone ||
+        '+91 7023526817',
 
-    description:
-      'Available daily, 8 AM – 11:59 PM',
+      description:
+        'Available daily, 8 AM – 11:59 PM',
 
-    gradient:
-      'from-green-500 to-teal-600',
-  },
+      gradient:
+        'from-green-500 to-teal-600',
+    },
 
-  {
-    icon: MapPin,
+    {
+      icon: MapPin,
 
-    title: 'Office',
+      title: 'Office',
 
-    value:
-      settings?.address ||
-      'Chandigarh',
+      value:
+        settings?.address ||
+        'Chandigarh',
 
-    description: 'Welcome to Defite',
+      description: 'Welcome to Defite',
 
-    gradient:
-      'from-orange-500 to-red-600',
-  },
+      gradient:
+        'from-orange-500 to-red-600',
+    },
 
-  {
-    icon: Clock,
+    {
+      icon: Clock,
 
-    title: 'Response Time',
+      title: 'Response Time',
 
-    value:
-      settings?.responseTime ||
-      '< 24 Hours',
+      value:
+        settings?.responseTime ||
+        '< 24 Hours',
 
-    description:
-      'Fast and reliable communication',
+      description:
+        'Fast and reliable communication',
 
-    gradient:
-      'from-purple-500 to-pink-600',
-  },
-];
+      gradient:
+        'from-purple-500 to-pink-600',
+    },
+  ];
 
   return (
     <section
@@ -305,8 +305,7 @@ const Contact = () => {
             <div className="space-y-8">
               <div>
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                  Let’s Build Something That
-                  Works
+                  Let's Discuss Your Software Requirements
                 </h3>
 
                 <p className="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">

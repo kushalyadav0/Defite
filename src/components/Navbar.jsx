@@ -47,7 +47,7 @@ const Navbar = ({
   const navItems = [
     'Home',
     'About',
-    'Services',
+    'Solutions',
     'Projects',
     'Testimonials',
     'Contact',

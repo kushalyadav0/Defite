@@ -1,5 +1,4 @@
 import React from 'react';
-import { Heart, Code, Coffee } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -13,80 +12,112 @@ const Footer = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center">
-          {/* Logo and Tagline */}
-          <div className="mb-8">
-            <h3 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
-              Defite
-            </h3>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Building systems that help businesses reduce manual work, improve efficiency, and scale with confidence.
-            </p>
-          </div>
+        {/* Company Info */}
+        <div className="text-center mb-12">
+          <h3 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
+            Defite
+          </h3>
 
-          {/* Services Links */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 max-w-2xl mx-auto">
-            <div className="text-center">
-              <h4 className="text-white font-semibold mb-2">Frontend</h4>
-              <p className="text-gray-400 text-sm">Modern, responsive interfaces</p>
-            </div>
-            <div className="text-center">
-              <h4 className="text-white font-semibold mb-2">Backend</h4>
-              <p className="text-gray-400 text-sm">Scalable & secure systems</p>
-            </div>
-            <div className="text-center">
-              <h4 className="text-white font-semibold mb-2">AI/ML</h4>
-              <p className="text-gray-400 text-sm">Reduce manual work, improve efficiency</p>
-            </div>
-            <div className="text-center">
-              <h4 className="text-white font-semibold mb-2">Deployment</h4>
-              <p className="text-gray-400 text-sm">Reliable, production-ready infrastructure</p>
-            </div>
-          </div>
+          <p className="text-gray-400 text-lg max-w-3xl mx-auto leading-8">
+            Defite is a software development company delivering custom software,
+            enterprise applications, AI-powered solutions
+            that help businesses innovate, automate, and scale with confidence.
+          </p>
+        </div>
 
-          {/* Made with Love */}
-          {/* <div className="flex items-center justify-center space-x-2 mb-6 text-gray-400">
-            <span>Made with</span>
-            <Heart className="text-red-500 fill-current animate-pulse" size={16} />
-            <span>and</span>
-            <Code className="text-blue-400" size={16} />
-            <span>and lots of</span>
-            <Coffee className="text-yellow-600" size={16} />
-          </div> */}
-
-          {/* Copyright and Links */}
-          <div className="border-t border-gray-800 pt-6">
-            <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8 text-sm text-gray-400">
-              <span>© {currentYear} Defite. All rights reserved.</span>
-              <div className="flex space-x-6">
-                <button className="hover:text-white transition-colors duration-200 hover:underline">
-                  Privacy Policy
-                </button>
-                <button className="hover:text-white transition-colors duration-200 hover:underline">
-                  Terms of Service
-                </button>
-                <button className="hover:text-white transition-colors duration-200 hover:underline">
-                  Cookie Policy
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Contact CTA */}
-          <div className="mt-8 p-6 bg-gradient-to-r from-blue-900/50 to-purple-900/50 rounded-xl border border-gray-800">
-            <h4 className="text-xl font-semibold text-white mb-2">
-              Have a project or idea?
+        {/* Footer Links */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12 text-center">
+          <div>
+            <h4 className="text-white font-semibold text-lg mb-4">
+              Solutions
             </h4>
-            <p className="text-gray-300 mb-4">
-              Let’s build a system that actually works.
-            </p>
-            <button 
-              onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
-              className="inline-flex items-center px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl font-semibold transform hover:scale-105"
-            >
-              Get Started Today
-            </button>
+            <ul className="space-y-2 text-gray-400 text-sm">
+              <li>Custom Software</li>
+              <li>Enterprise Applications</li>
+              <li>AI & Automation</li>
+              <li>Cloud Solutions</li>
+            </ul>
           </div>
+
+          <div>
+            <h4 className="text-white font-semibold text-lg mb-4">
+              Technologies
+            </h4>
+            <ul className="space-y-2 text-gray-400 text-sm">
+              <li>React & Next.js</li>
+              <li>Node.js & Python</li>
+              <li>AWS & Docker</li>
+              <li>PostgreSQL</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-white font-semibold text-lg mb-4">
+              Company
+            </h4>
+            <ul className="space-y-2 text-gray-400 text-sm">
+              <li>About Us</li>
+              <li>Case Studies</li>
+              <li>Careers</li>
+              <li>Contact</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-white font-semibold text-lg mb-4">
+              Support
+            </h4>
+            <ul className="space-y-2 text-gray-400 text-sm">
+              <li>Consultation</li>
+              <li>Maintenance</li>
+              <li>Documentation</li>
+              <li>Technical Support</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Copyright */}
+        <div className="border-t border-gray-800 pt-6">
+          <div className="flex flex-col md:flex-row justify-center items-center gap-4 text-sm text-gray-400">
+            <span>© {currentYear} Defite. All rights reserved.</span>
+
+            <div className="flex flex-wrap justify-center gap-6">
+              <button className="hover:text-white transition-colors">
+                Privacy Policy
+              </button>
+
+              <button className="hover:text-white transition-colors">
+                Terms of Service
+              </button>
+
+              <button className="hover:text-white transition-colors">
+                Cookie Policy
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* CTA */}
+        <div className="mt-10 p-8 bg-gradient-to-r from-blue-900/50 to-purple-900/50 rounded-2xl border border-gray-800 text-center">
+          <h4 className="text-2xl font-bold text-white mb-3">
+            Ready to Build Your Next Software Solution?
+          </h4>
+
+          <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
+            Let's discuss how custom software, AI, and cloud technologies can
+            help your business innovate, automate, and scale.
+          </p>
+
+          <button
+            onClick={() =>
+              document
+                .getElementById('contact')
+                ?.scrollIntoView({ behavior: 'smooth' })
+            }
+            className="inline-flex items-center px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl font-semibold transform hover:scale-105"
+          >
+            Schedule a Consultation
+          </button>
         </div>
       </div>
     </footer>

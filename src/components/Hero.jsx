@@ -60,7 +60,7 @@ const Hero = () => {
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-purple-400/20 to-pink-600/20 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-50 relative z-10">
         <div
           ref={heroRef}
           className="text-center opacity-0 transform translate-y-10"
@@ -81,10 +81,16 @@ const Hero = () => {
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
-            {homepageCMS?.content
-              ?.mainHeading ||
-              'Your Vision. Our Code. Defite.'}
+          <h1 className="text-4xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+            {homepageCMS?.content?.mainHeaing ? (
+              homepageCMS.content.mainHeaing
+            ) : (
+              <>
+                Engineering Scalable Software
+                <br />
+                for Modern Businesses
+              </>
+            )}
           </h1>
 
           {/* Subtitle */}
@@ -105,7 +111,7 @@ const Hero = () => {
               className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl text-lg font-semibold transform hover:scale-105 hover:-translate-y-1"
             >
               <span className="flex items-center justify-center">
-                Explore Services
+                Our Solutions
 
                 <ArrowRight
                   className="ml-2 group-hover:translate-x-1 transition-transform duration-200"
@@ -144,7 +150,7 @@ const Hero = () => {
               </div>
 
               <div className="text-gray-600 dark:text-gray-300">
-                Projects Delivered
+                Software Solutions
               </div>
             </div>
 
@@ -166,7 +172,7 @@ const Hero = () => {
               </div>
 
               <div className="text-gray-600 dark:text-gray-300">
-                Support Available
+                Technical Support
               </div>
             </div>
           </div>

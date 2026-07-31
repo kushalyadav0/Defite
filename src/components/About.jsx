@@ -47,10 +47,10 @@ const About = () => {
       icon: Award,
 
       title:
-        'Business-First Thinking',
+        'Enterprise Software',
 
       description:
-        'We understand your business before building anything.',
+        'Custom software engineered for reliability, scalability, and long-term growth.',
 
       gradient:
         'from-blue-500 to-purple-600',
@@ -60,10 +60,10 @@ const About = () => {
       icon: Zap,
 
       title:
-        'System-Oriented Approach',
+        'Digital Transformation',
 
       description:
-        'We focus on building complete systems, not isolated features.',
+        'Modernizing business operations with cloud-native applications and automation.',
 
       gradient:
         'from-purple-500 to-pink-600',
@@ -73,10 +73,10 @@ const About = () => {
       icon: Users,
 
       title:
-        'Clear Communication',
+        'Long-Term Partnership',
 
       description:
-        'Structured updates, defined timelines, no confusion.',
+        'Continuous maintenance, enhancements, and technical support beyond delivery.',
 
       gradient:
         'from-green-500 to-teal-600',
