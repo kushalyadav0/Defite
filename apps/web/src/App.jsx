@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
+import Products from './components/Products';
 import Services from './components/Services';
 import Projects from './components/Projects';
 import Testimonials from './components/Testimonials';
@@ -24,6 +25,7 @@ function App() {
       <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
       <Hero />
       <About />
+      <Products />
       <Services />
       <Projects />
       <Testimonials />
