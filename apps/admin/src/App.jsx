@@ -10,6 +10,8 @@ import Dashboard from './pages/Dashboard';
 
 import Projects from './pages/Projects';
 
+import Products from './pages/Products';
+
 import Testimonials from './pages/Testimonials';
 
 import CMS from './pages/CMS';
@@ -36,6 +38,16 @@ function App() {
           element={
             <ProtectedRoute>
               <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Products */}
+        <Route
+          path="/products"
+          element={
+            <ProtectedRoute>
+              <Products />
             </ProtectedRoute>
           }
         />

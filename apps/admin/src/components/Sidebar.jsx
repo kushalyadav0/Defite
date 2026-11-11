@@ -5,6 +5,7 @@ import {
   FileText,
   Settings,
   Mail,
+  Boxes,
 } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -15,6 +16,11 @@ const Sidebar = () => {
       name: 'Dashboard',
       path: '/dashboard',
       icon: LayoutDashboard,
+    },
+    {
+      name: 'Products',
+      path: '/products',
+      icon: Boxes,
     },
     {
       name: 'Projects',
