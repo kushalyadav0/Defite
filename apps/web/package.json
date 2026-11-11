@@ -1,11 +1,12 @@
 {
-  "name": "vite-react-typescript-starter",
+  "name": "defite-web",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "node scripts/check-ga.mjs && vite build && node scripts/check-ga.mjs",
+    "check:ga": "node scripts/check-ga.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },
