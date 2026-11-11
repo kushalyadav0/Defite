@@ -6,6 +6,7 @@ import settingsRoutes from '../modules/settings/settings.routes.js'
 import uploadRoutes from '../modules/upload/upload.routes.js'
 import contactRoutes from '../modules/contact/contact.routes.js'
 import projectRoutes from '../modules/projects/project.routes.js'
+import productRoutes from '../modules/products/product.routes.js'
 import testimonialRoutes from '../modules/testimonials/testimonial.routes.js'
 
 const router = express.Router()
@@ -17,6 +18,7 @@ router.use('/settings', settingsRoutes)
 router.use('/upload', uploadRoutes)
 router.use('/contact', contactRoutes)
 router.use('/projects', projectRoutes)
+router.use('/products', productRoutes)
 router.use('/testimonials', testimonialRoutes)
 router.use('/cms', cmsRoutes);
 
