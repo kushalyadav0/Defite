@@ -4,7 +4,7 @@ One repository for the Defite website, admin panel and API.
 
 | Folder | What it is | Deploy setting |
 |---|---|---|
-| `apps/web` | Public website (Vite + React), on Vercel at defite.in | The root `vercel.json` builds `apps/web`, so the Vercel project needs no setting change |
+| `apps/web` | Public website (Vite + React), on Vercel at defite.in | Vercel project `defite` with Root Directory `apps/web` |
 | `apps/admin` | Admin panel (Vite + React) | A separate Vercel project with Root Directory `apps/admin` (its `vercel.json` sends every route to the app) |
 | `apps/api` | API (Express + MongoDB), served at `defite.cloud/api/v1` | Build the Docker image from `apps/api` |
 
