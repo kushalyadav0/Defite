@@ -1,7 +1,10 @@
 import React from 'react';
+import { requestDemo } from '../three/selectProduct';
+import { useProducts } from '../hooks/useProducts';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const products = useProducts();
 
   return (
     <footer className="bg-gray-900 dark:bg-black text-white py-12 relative overflow-hidden">
@@ -19,9 +22,9 @@ const Footer = () => {
           </h3>
 
           <p className="text-gray-400 text-lg max-w-3xl mx-auto leading-8">
-            Defite is a software development company delivering custom software,
-            enterprise applications, AI-powered solutions
-            that help businesses innovate, automate, and scale with confidence.
+            Defite builds ready-to-use software for cafés, restaurants, salons,
+            retail stores and sales teams, and custom software for businesses
+            that need something of their own.
           </p>
         </div>
 
@@ -53,25 +56,45 @@ const Footer = () => {
 
           <div>
             <h4 className="text-white font-semibold text-lg mb-4">
-              Company
+              Products
             </h4>
             <ul className="space-y-2 text-gray-400 text-sm">
-              <li>About Us</li>
-              <li>Case Studies</li>
-              <li>Careers</li>
-              <li>Contact</li>
+              {products.map((p) => (
+                <li key={p.slug}>
+                  {p.appUrl && p.status !== 'coming_soon' ? (
+                    <a href={p.appUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                      {p.name}
+                    </a>
+                  ) : (
+                    <span>
+                      {p.name} <span className="text-gray-500">(soon)</span>
+                    </span>
+                  )}
+                </li>
+              ))}
             </ul>
           </div>
 
           <div>
             <h4 className="text-white font-semibold text-lg mb-4">
-              Support
+              Company
             </h4>
             <ul className="space-y-2 text-gray-400 text-sm">
-              <li>Consultation</li>
-              <li>Maintenance</li>
-              <li>Documentation</li>
-              <li>Technical Support</li>
+              {[
+                ['About us', 'about'],
+                ['Custom solutions', 'solutions'],
+                ['Projects', 'projects'],
+                ['Contact', 'contact'],
+              ].map(([label, id]) => (
+                <li key={id}>
+                  <button
+                    onClick={() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })}
+                    className="hover:text-white transition-colors"
+                  >
+                    {label}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -100,23 +123,19 @@ const Footer = () => {
         {/* CTA */}
         <div className="mt-10 p-8 bg-gradient-to-r from-blue-900/50 to-purple-900/50 rounded-2xl border border-gray-800 text-center">
           <h4 className="text-2xl font-bold text-white mb-3">
-            Ready to Build Your Next Software Solution?
+            See Defite in action
           </h4>
 
           <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-            Let's discuss how custom software, AI, and cloud technologies can
-            help your business innovate, automate, and scale.
+            Book a walkthrough of any of our products, or tell us what you
+            need built.
           </p>
 
           <button
-            onClick={() =>
-              document
-                .getElementById('contact')
-                ?.scrollIntoView({ behavior: 'smooth' })
-            }
+            onClick={() => requestDemo()}
             className="inline-flex items-center px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl font-semibold transform hover:scale-105"
           >
-            Schedule a Consultation
+            Book a demo
           </button>
         </div>
       </div>

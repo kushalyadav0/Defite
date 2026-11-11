@@ -81,8 +81,8 @@ const Projects = () => {
             <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8 rounded-full"></div>
 
             <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              Explore some of our recent work that demonstrates our expertise
-              across various domains and technologies.
+              Custom software we have designed and built for clients across
+              different industries.
             </p>
           </div>
 

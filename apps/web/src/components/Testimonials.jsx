@@ -134,12 +134,8 @@ const Testimonials = () => {
             <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8 rounded-full"></div>
 
             <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              Don't just take our word for it.
-              Here's what our satisfied
-              clients have to say about
-              working with Defite and the
-              results we've delivered
-              together.
+              What business owners say about
+              working with Defite.
             </p>
 
             <p className="text-base md:text-lg text-blue-700 dark:text-blue-300 font-semibold mt-6 max-w-4xl mx-auto">
