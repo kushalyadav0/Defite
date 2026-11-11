@@ -24,6 +24,6 @@ export const seedAdmin = async () => {
 
     logger.info('Default admin created')
   } catch (error) {
-    logger.error('Admin seeding failed')
+    logger.error('Admin seeding failed:', error.message)
   }
 }
