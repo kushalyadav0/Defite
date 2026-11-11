@@ -10,6 +10,7 @@ import {
 import { useAppContext } from '../context/AppContext';
 
 import { sendContactMessage } from '../services/contact.service';
+import { onContactSubject } from '../three/selectProduct';
 
 const Contact = () => {
   const { settings } = useAppContext();
@@ -27,6 +28,11 @@ const Contact = () => {
   const [loading, setLoading] = useState(false);
 
   const contactRef = useRef(null);
+
+  useEffect(
+    () => onContactSubject((subject) => setFormData((prev) => ({ ...prev, subject }))),
+    []
+  );
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -176,10 +182,9 @@ const Contact = () => {
             <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8 rounded-full"></div>
 
             <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              Ready to bring your project to
-              life? Let&apos;s discuss how we can
-              help you achieve your goals and
-              transform your vision into reality.
+              Want a demo of one of our products, or software built
+              around how your business works? Tell us a little about
+              it and we&apos;ll get back to you.
             </p>
           </div>
 
@@ -261,7 +266,7 @@ const Contact = () => {
                       onChange={handleInputChange}
                       required
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                      placeholder="Project discussion"
+                      placeholder="Demo request: Verso, or a custom project"
                     />
                   </div>
 

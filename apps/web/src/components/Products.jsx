@@ -3,7 +3,7 @@ import { ArrowRight, ExternalLink, PlayCircle, Clock, Hand } from 'lucide-react'
 import { useProducts } from '../hooks/useProducts';
 import { useInView, prefersReducedMotion } from '../hooks/useInView';
 import SceneBoundary, { webglAvailable } from '../three/SceneBoundary';
-import { onSelectProduct } from '../three/selectProduct';
+import { onSelectProduct, requestDemo } from '../three/selectProduct';
 
 const ProductStage = lazy(() => import('../three/ProductStage'));
 
@@ -17,8 +17,6 @@ const textOn = (hex) => {
   return 0.299 * r + 0.587 * g + 0.114 * b > 170 ? '#111827' : '#fff';
 };
 
-const scrollToContact = () =>
-  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
 
 const isComingSoon = (p) => p.status === 'coming_soon' || !p.appUrl;
 
@@ -33,11 +31,11 @@ const ProductActions = ({ product }) => {
   if (isComingSoon(product)) {
     return (
       <button
-        onClick={scrollToContact}
+        onClick={() => requestDemo(product.name)}
         className="inline-flex items-center px-5 py-3 rounded-xl border border-gray-300 dark:border-white/15 text-gray-800 dark:text-gray-100 font-semibold hover:border-gray-400 transition-colors"
       >
         <Clock size={16} className="mr-2" />
-        Get notified
+        Get early access
       </button>
     );
   }
@@ -66,7 +64,7 @@ const ProductActions = ({ product }) => {
         </a>
       )}
       <button
-        onClick={scrollToContact}
+        onClick={() => requestDemo(product.name)}
         className="inline-flex items-center px-3 py-3 font-semibold text-gray-700 dark:text-gray-200 hover:translate-x-1 transition-transform"
       >
         Book a demo
@@ -111,7 +109,7 @@ const Products = () => {
             </span>
           </h2>
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Software built for the way independent businesses actually run. Pick one to explore it, then open it to try.
+            Ready-to-use software for cafés, salons, retail stores and sales teams. Pick a product to see what it does, then open it and try it yourself.
           </p>
         </div>
 

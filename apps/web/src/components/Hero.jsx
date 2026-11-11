@@ -2,6 +2,7 @@ import { Suspense, lazy, useEffect, useRef, useState } from 'react';
 import { ArrowRight, Sparkles, MousePointerClick } from 'lucide-react';
 import { useAppContext } from '../context/AppContext';
 import { useInView, prefersReducedMotion } from '../hooks/useInView';
+import { requestDemo } from '../three/selectProduct';
 import SceneBoundary, { webglAvailable } from '../three/SceneBoundary';
 import { useProducts } from '../hooks/useProducts';
 
@@ -18,9 +19,9 @@ const SceneFallback = () => (
 );
 
 const STATS = (cms, count) => [
-  { value: cms?.content?.projectsDelivered || '50+', label: 'Software solutions', color: 'text-blue-500 dark:text-blue-400' },
-  { value: String(count), label: 'Products', color: 'text-purple-500 dark:text-purple-400' },
-  { value: '24/7', label: 'Technical support', color: 'text-pink-500 dark:text-pink-400' },
+  { value: String(count), label: 'Products for businesses', color: 'text-blue-500 dark:text-blue-400' },
+  { value: cms?.content?.projectsDelivered || '10+', label: 'Custom projects delivered', color: 'text-purple-500 dark:text-purple-400' },
+  { value: 'Daily', label: 'Support, 8 AM to midnight', color: 'text-pink-500 dark:text-pink-400' },
 ];
 
 const Hero = () => {
@@ -60,27 +61,21 @@ const Hero = () => {
           <div className="inline-flex items-center gap-2 rounded-full border border-indigo-200 dark:border-white/10 bg-white/70 dark:bg-white/5 px-4 py-2 backdrop-blur mb-6">
             <Sparkles className="text-indigo-500 dark:text-indigo-300" size={16} />
             <span className="text-sm font-medium text-gray-700 dark:text-gray-200">
-              Build Systems. Scale Businesses.
+              Products and custom software, one team
             </span>
           </div>
 
           <h1 className="text-4xl sm:text-5xl xl:text-6xl font-bold tracking-tight text-gray-900 dark:text-white mb-6 leading-[1.05]">
-            {homepageCMS?.content?.mainHeaing ? (
-              homepageCMS.content.mainHeaing
-            ) : (
-              <>
-                Engineering{' '}
-                <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-                  scalable software
-                </span>{' '}
-                for modern businesses
-              </>
-            )}
+            Software that runs your{' '}
+            <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+              café, salon, store
+            </span>{' '}
+            and sales pipeline
           </h1>
 
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-            {homepageCMS?.content?.heroSubtitle ||
-              'We help businesses reduce manual work, automate operations, and build scalable digital systems — from idea to deployment.'}
+            Defite makes billing, inventory, bookings and lead generation simple for growing businesses. Start with one of our
+            products today, or have us build exactly what you need.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -94,11 +89,11 @@ const Hero = () => {
               </span>
             </button>
             <button
-              onClick={() => scrollToSection('solutions')}
+              onClick={() => requestDemo()}
               className="group px-8 py-4 rounded-xl border border-gray-300 dark:border-white/15 bg-white/60 dark:bg-white/5 text-gray-900 dark:text-white text-lg font-semibold backdrop-blur hover:border-indigo-400 transition-all hover:-translate-y-0.5"
             >
               <span className="flex items-center justify-center">
-                Our solutions
+                Book a demo
                 <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
               </span>
             </button>

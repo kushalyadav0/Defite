@@ -83,7 +83,7 @@ const Services = () => {
         'Data Warehousing',
         'ETL Pipelines'
       ],
-      technologies: ['Monitoring', 'CI/CD', 'Cloud Security', 'AWS', 'Kubernetes', 'Logging'],
+      technologies: ['PostgreSQL', 'Python', 'Node.js', 'AWS', 'Docker', 'CI/CD'],
       gradient: 'from-orange-500 to-red-600',
       bgGradient: 'from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20'
     }
@@ -101,14 +101,14 @@ const Services = () => {
         <div ref={servicesRef} className="opacity-0 transform translate-y-10">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-              Our{' '}
+              Custom{' '}
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 Solutions
               </span>
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8 rounded-full"></div>
             <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            We deliver end-to-end software solutions tailored to business needs, from enterprise applications and cloud platforms to AI-driven automation and digital products.
+            Need something our products don't cover? We design, build and maintain software around how your business works, from websites and internal tools to automation and dashboards.
             </p>
           </div>
 
