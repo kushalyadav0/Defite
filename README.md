@@ -4,7 +4,7 @@ One repository for the Defite website, admin panel and API.
 
 | Folder | What it is | Deploy setting |
 |---|---|---|
-| `apps/web` | Public website (Vite + React) | Base / root directory: `apps/web`, build `npm run build`, publish `dist` |
+| `apps/web` | Public website (Vite + React), on Vercel at defite.in | The root `vercel.json` builds `apps/web`, so the Vercel project needs no setting change |
 | `apps/admin` | Admin panel (Vite + React) | Netlify base directory: `apps/admin` (its `netlify.toml` stays in that folder) |
 | `apps/api` | API (Express + MongoDB), served at `defite.cloud/api/v1` | Build the Docker image from `apps/api` |
 
