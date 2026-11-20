@@ -1,3 +1,4 @@
+import { assetUrl } from '../api/axios';
 import {
   useEffect,
   useState,
@@ -199,7 +200,7 @@ const Testimonials = () => {
 
               {formData.image && (
                 <img
-                  src={`http://defite.cloud${formData.image}`}
+                  src={assetUrl(formData.image)}
                   alt="Preview"
                   className="w-24 h-24 rounded-full object-cover border"
                 />
@@ -257,7 +258,7 @@ const Testimonials = () => {
                   <div className="flex items-center gap-4">
                     {/* Client Image */}
                     <img
-                      src={`http://defite.cloud${testimonial.image}`}
+                      src={assetUrl(testimonial.image)}
                       alt={testimonial.name}
                       className="w-16 h-16 rounded-full object-cover border"
                     />

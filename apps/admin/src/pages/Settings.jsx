@@ -1,3 +1,4 @@
+import { API_ORIGIN } from '../api/axios';
 import {
   useEffect,
   useState,
@@ -41,7 +42,7 @@ const Settings = () => {
       return url;
     }
 
-    return `https://defite.cloud${url.startsWith('/')
+    return `${API_ORIGIN}${url.startsWith('/')
         ? url
         : `/${url}`
       }`;
