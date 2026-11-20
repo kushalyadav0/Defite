@@ -1,3 +1,4 @@
+import { API_ORIGIN } from '../api/axios';
 import React, { useEffect, useRef, useState } from 'react';
 import { ArrowRight, ExternalLink, Github } from 'lucide-react';
 import { getProjects } from '../services/project.service';
@@ -17,7 +18,7 @@ const Projects = () => {
       return url;
     }
 
-    return `https://defite.cloud${url}`;
+    return `${API_ORIGIN}${url}`;
   };
 
   useEffect(() => {

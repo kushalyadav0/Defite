@@ -1,3 +1,4 @@
+import { API_ORIGIN } from '../api/axios';
 import React, { useState } from 'react';
 
 import {
@@ -29,7 +30,7 @@ const Navbar = ({
       return url;
     }
 
-    return `https://defite.cloud${url}`;
+    return `${API_ORIGIN}${url}`;
   };
 
   const scrollToSection = (

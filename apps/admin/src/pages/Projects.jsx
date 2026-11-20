@@ -1,3 +1,4 @@
+import { API_ORIGIN } from '../api/axios';
 import {
   useEffect,
   useState,
@@ -46,7 +47,7 @@ const Projects = () => {
       return url;
     }
 
-    return `https://defite.cloud${url}`;
+    return `${API_ORIGIN}${url}`;
   };
 
   const fetchProjects = async () => {

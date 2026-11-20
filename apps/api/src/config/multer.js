@@ -1,38 +1,20 @@
 import multer from 'multer'
 
-import path from 'path'
-
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'src/uploads')
-  },
-
-  filename: (req, file, cb) => {
-    const uniqueName =
-      Date.now() +
-      '-' +
-      Math.round(Math.random() * 1e9)
-
-    cb(
-      null,
-      uniqueName +
-        path.extname(file.originalname)
-    )
-  },
-})
+// Files are kept in memory and saved by the upload controller, either to
+// Vercel Blob (when BLOB_READ_WRITE_TOKEN is set) or to src/uploads on disk.
+// Vercel's filesystem is read-only, so disk storage only works on a server.
+const storage = multer.memoryStorage()
 
 const fileFilter = (req, file, cb) => {
   if (file.mimetype.startsWith('image/')) {
     cb(null, true)
   } else {
-    cb(
-      new Error('Only image files are allowed'),
-      false
-    )
+    cb(new Error('Only image files are allowed'), false)
   }
 }
 
 export const upload = multer({
   storage,
   fileFilter,
+  limits: { fileSize: 5 * 1024 * 1024 },
 })
